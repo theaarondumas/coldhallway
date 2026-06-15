@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cold Hallway Films</title>
+  <meta name="description" content="Cold Hallway Films. Home of The Technician." />
+  <style>
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;overflow:hidden;background:#000;color:#e9edf0;font-family:Inter,Arial,Helvetica,sans-serif}
+    .splash{height:100vh;width:100vw;display:flex;align-items:center;justify-content:center;position:relative;background:radial-gradient(circle at 50% 42%,rgba(72,102,115,.18),transparent 38%),#000;transition:opacity .55s ease,filter .55s ease}
+    .splash:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at center,transparent 48%,rgba(0,0,0,.84) 100%);pointer-events:none;z-index:1}
+    .splash:after{content:"";position:absolute;inset:0;background:rgba(255,255,255,0);pointer-events:none;z-index:4}
+    .logo-link{display:block;position:relative;z-index:2;width:min(86vw,1080px);cursor:pointer;transition:transform .6s ease,filter .6s ease}
+    .logo-link:hover{transform:scale(1.015);filter:brightness(1.18) contrast(1.05)}
+    .logo-link img{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;filter:drop-shadow(0 0 18px rgba(120,180,200,.10))}
+    .enter{position:absolute;left:0;right:0;bottom:34px;text-align:center;z-index:3;font-size:12px;letter-spacing:.55em;text-transform:uppercase;color:rgba(233,237,240,.72);pointer-events:none;transition:opacity .2s ease}
+    .hint{position:absolute;left:0;right:0;bottom:15px;text-align:center;z-index:3;font-size:9px;letter-spacing:.25em;text-transform:uppercase;color:rgba(233,237,240,.32);pointer-events:none}
+
+    body.entering .logo-link{animation:logoFlicker .95s steps(1,end) forwards}
+    body.entering .enter{animation:textFlicker .95s steps(1,end) forwards}
+    body.entering .splash:after{animation:lightFlash .95s steps(1,end) forwards}
+    body.entering .splash{animation:roomPulse .95s steps(1,end) forwards}
+    body.fadeout .splash{opacity:0;filter:brightness(0)}
+
+    @keyframes logoFlicker{
+      0%{opacity:1;filter:brightness(1.35) contrast(1.08)}
+      8%{opacity:.18;filter:brightness(.35) contrast(1.5)}
+      15%{opacity:1;filter:brightness(1.65) contrast(1.15)}
+      22%{opacity:.05;filter:brightness(.08)}
+      30%{opacity:.92;filter:brightness(1.25)}
+      41%{opacity:.28;filter:brightness(.4)}
+      48%{opacity:1;filter:brightness(1.85) contrast(1.2)}
+      57%{opacity:.08;filter:brightness(.05)}
+      66%{opacity:1;filter:brightness(1.45)}
+      78%{opacity:.22;filter:brightness(.25)}
+      88%{opacity:1;filter:brightness(1.1)}
+      100%{opacity:1;filter:brightness(.65)}
+    }
+    @keyframes textFlicker{
+      0%,15%,30%,48%,66%,88%{opacity:1}
+      8%,22%,41%,57%,78%{opacity:.08}
+      100%{opacity:0}
+    }
+    @keyframes lightFlash{
+      0%,15%,48%,66%{background:rgba(210,245,255,.12)}
+      8%,22%,41%,57%,78%{background:rgba(0,0,0,.62)}
+      100%{background:rgba(0,0,0,.96)}
+    }
+    @keyframes roomPulse{
+      0%,15%,48%,66%{background:radial-gradient(circle at 50% 42%,rgba(110,170,190,.28),transparent 38%),#000}
+      8%,22%,41%,57%,78%{background:#000}
+      100%{background:#000}
+    }
+    @media(max-width:700px){.logo-link{width:94vw}.enter{bottom:28px;font-size:11px;letter-spacing:.42em}.hint{display:none}}
+  </style>
+</head>
+<body>
+  <main class="splash" aria-label="Cold Hallway Films landing page">
+    <a class="logo-link" href="the-technician.html" aria-label="Enter Cold Hallway Films">
+      <img src="assets/coldhallway-logo.jpeg" alt="Cold Hallway Films logo" />
+    </a>
+    <div class="enter">ENTER</div>
+    <div class="hint">click the logo</div>
+  </main>
+  <script>
+    const logo = document.querySelector('.logo-link');
+    let entering = false;
+    logo.addEventListener('click', function(event){
+      event.preventDefault();
+      if (entering) return;
+      entering = true;
+      document.body.classList.add('entering');
+      setTimeout(() => document.body.classList.add('fadeout'), 950);
+      setTimeout(() => { window.location.href = logo.href; }, 1400);
+    });
+  </script>
+</body>
+</html>
