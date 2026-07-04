@@ -4,80 +4,251 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Technician | Cold Hallway Films</title>
-  <meta name="description" content="The Technician from Cold Hallway Films. An action thriller written by Aaron Dumas." />
+
   <style>
-    :root{--bg:#030406;--panel:#0b0f12;--text:#e9edf0;--muted:#9ba5aa;--line:rgba(255,255,255,.12);--cyan:#65e8ff;--warm:#ff4c93}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif;letter-spacing:.02em}a{color:inherit;text-decoration:none}.nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:18px 5vw;background:rgba(3,4,6,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.brand{font-weight:700;letter-spacing:.28em;font-size:13px}.navlinks{display:flex;gap:24px;font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--muted)}.navlinks a:hover{color:#fff}.section{padding:80px 5vw}.hero{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:56px;align-items:center;max-width:1180px;margin:auto}.poster{width:100%;border:1px solid var(--line);box-shadow:0 30px 90px rgba(0,0,0,.75)}.eyebrow{color:var(--cyan);font-size:12px;text-transform:uppercase;letter-spacing:.32em;margin-bottom:16px}.title{font-size:clamp(48px,8vw,100px);line-height:.88;margin:0;text-transform:uppercase;letter-spacing:.03em}.tagline{font-size:clamp(20px,3vw,34px);margin:24px 0 18px;color:#fff}.copy{font-size:18px;line-height:1.75;color:var(--muted);max-width:720px}.buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}.btn{border:1px solid var(--line);padding:14px 20px;text-transform:uppercase;font-size:12px;letter-spacing:.18em;background:rgba(255,255,255,.04)}.btn.primary{border-color:rgba(101,232,255,.55);box-shadow:0 0 30px rgba(101,232,255,.12)}.split{max-width:1180px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:40px}.card{border:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));padding:34px}.card h2,.section h2{font-size:34px;text-transform:uppercase;letter-spacing:.12em;margin:0 0 18px}.card p{color:var(--muted);line-height:1.7}.stills{max-width:1180px;margin:auto}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}.grid figure{margin:0;overflow:hidden;border:1px solid var(--line);background:#111}.grid figure:nth-child(1),.grid figure:nth-child(2){grid-column:span 3}.grid figure:nth-child(n+3){grid-column:span 2}.grid img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:16/9;transition:transform .5s ease}.grid img:hover{transform:scale(1.04)}.contact{max-width:900px;margin:auto;text-align:center}.footer{padding:34px 5vw;border-top:1px solid var(--line);color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}@media(max-width:800px){.hero,.split{grid-template-columns:1fr}.navlinks{display:none}.section{padding:56px 5vw}.grid figure,.grid figure:nth-child(1),.grid figure:nth-child(2),.grid figure:nth-child(n+3){grid-column:span 6}.title{font-size:52px}}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #050505;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      background: black;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(40%) contrast(115%) saturate(70%);
+      transform: scale(1.04);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle, rgba(0,0,0,0.15) 20%, rgba(0,0,0,0.85) 100%),
+        linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.85));
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 10vw, 8rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .tagline {
+      font-size: clamp(1.1rem, 3vw, 1.8rem);
+      color: #ddd;
+      margin-bottom: 36px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      color: white;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.7);
+      padding: 14px 28px;
+      border-radius: 999px;
+      letter-spacing: 0.12em;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+      background: rgba(0,0,0,0.25);
+    }
+
+    .btn:hover {
+      background: white;
+      color: black;
+    }
+
+    section {
+      padding: 90px 8%;
+    }
+
+    .poster-section {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 50px;
+      align-items: center;
+      background: #080808;
+    }
+
+    .poster-section img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 8px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    }
+
+    .copy h2 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .copy p {
+      color: #cfcfcf;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      max-width: 650px;
+    }
+
+    .stills {
+      background: #050505;
+    }
+
+    .stills h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .still-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .still-grid img {
+      width: 100%;
+      border-radius: 6px;
+      opacity: 0.9;
+    }
+
+    .contact {
+      text-align: center;
+      background: #0b0b0b;
+    }
+
+    .contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .contact p {
+      color: #bbb;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 800px) {
+      .poster-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .poster-section img {
+        margin: 0 auto;
+      }
+
+      section {
+        padding: 70px 6%;
+      }
+    }
   </style>
 </head>
-<body>
-  <nav class="nav">
-    <a class="brand" href="index.html">COLD HALLWAY</a>
-    <div class="navlinks">
-      <a href="#technician">The Technician</a>
-      <a href="#stills">Stills</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
 
-  <section id="technician" class="section">
-    <div class="hero">
-      <img class="poster" src="assets/the-technician-poster.jpeg" alt="The Technician poster" />
-      <div>
+<body>
+
+  <main>
+
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="IMG_5128.mov" type="video/mp4">
+      </video>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
         <div class="eyebrow">Cold Hallway Films Presents</div>
-        <h1 class="title">The Technician</h1>
-        <div class="tagline">Skills Save Lives.</div>
-        <p class="copy">When <strong>Tony Marciano</strong>, a humble hospital supply technician working the night shift, stops a violent hospital break-in, his hidden instincts as a fighter are revealed. The patient he saves pulls him into a covert war against a powerful criminal network.</p>
+        <h1>The Technician</h1>
+        <p class="tagline">Skills Save Lives.</p>
+
         <div class="buttons">
-          <a class="btn primary" href="mailto:aardumas@gmail.com?subject=The%20Technician%20POC%20Inquiry">POC Inquiry</a>
-          <a class="btn" href="mailto:aardumas@gmail.com?subject=The%20Technician%20Pitch%20Deck%20Request">Request Deck</a>
-          <a class="btn" href="#stills">View Stills</a>
+          <a href="#poster" class="btn">More Info</a>
+          <a href="mailto:aardumas@gmail.com" class="btn">Contact</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="stills" class="section">
-    <div class="stills">
-      <div class="eyebrow">Proof of Concept</div>
-      <h2>Featured Stills</h2>
-      <div class="grid">
-        <figure><img src="assets/still-faceoff.jpeg" alt="Tony Marciano facing an intruder" /></figure>
-        <figure><img src="assets/still-arm-control.jpeg" alt="Tony Marciano applying an arm control" /></figure>
-        <figure><img src="assets/still-crashcart.jpeg" alt="Action still near a crash cart" /></figure>
-        <figure><img src="assets/still-hallway.jpeg" alt="Tony Marciano scanning the hallway" /></figure>
-        <figure><img src="assets/still-tony.jpeg" alt="Tony Marciano character close-up" /></figure>
+    <section id="poster" class="poster-section">
+      <div>
+        <img src="assets/technician-poster.jpeg" alt="The Technician Poster">
       </div>
-    </div>
-  </section>
 
-  <section id="about" class="section">
-    <div class="split">
-      <div class="card">
-        <h2>Cold Hallway Films</h2>
-        <p>Cold Hallway Films develops grounded action thrillers, crime dramas, and character-driven stories built around pressure, precision, and survival.</p>
+      <div class="copy">
+        <h2>Tony Marciano</h2>
+        <p>
+          When Tony Marciano, a humble hospital supply technician working the night shift,
+          stops a violent hospital break-in, his hidden instincts as a fighter are revealed.
+          The patient he saves draws him into a covert war against a powerful criminal network.
+        </p>
       </div>
-      <div class="card">
-        <h2>The Mission</h2>
-        <p>To build cinematic genre stories with emotional realism, practical stakes, and action rooted in character instead of spectacle alone.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="section">
-    <div class="contact">
-      <div class="eyebrow">Industry / Investors / Producers</div>
-      <h2>Contact</h2>
-      <p class="copy" style="margin:auto">For proof-of-concept access, deck requests, partnership inquiries, or representation contact Cold Hallway Films.</p>
-      <div class="buttons" style="justify-content:center">
-        <a class="btn primary" href="mailto:aardumas@gmail.com?subject=Cold%20Hallway%20Films%20Inquiry">Email Cold Hallway</a>
-      </div>
-    </div>
-  </section>
+    <section class="stills">
+      <h2>Production Stills</h2>
 
-  <footer class="footer">
-    <span>© 2026 Cold Hallway Films</span>
-    <span>Home of The Technician</span>
-  </footer>
+      <div class="still-grid">
+        <img src="assets/still-1.jpeg" alt="The Technician still">
+        <img src="assets/still-2.jpeg" alt="The Technician still">
+        <img src="assets/still-3.jpeg" alt="The Technician still">
+        <img src="assets/still-4.jpeg" alt="The Technician still">
+        <img src="assets/still-5.jpeg" alt="The Technician still">
+      </div>
+    </section>
+
+    <section class="contact">
+      <h2>Cold Hallway Films</h2>
+      <p>Industry inquiries, producers, investors, and collaborators.</p>
+      <a href="mailto:aardumas@gmail.com" class="btn">Contact</a>
+    </section>
+
+  </main>
+
 </body>
 </html>
