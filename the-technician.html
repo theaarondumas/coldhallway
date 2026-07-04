@@ -23,6 +23,21 @@
       overflow-x: hidden;
     }
 
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .05;
+      z-index: 999;
+      background-image:
+        repeating-radial-gradient(circle at 0 0,
+        transparent 0,
+        rgba(255,255,255,.2) 1px,
+        transparent 2px);
+      mix-blend-mode: soft-light;
+    }
+
     .hero {
       position: relative;
       width: 100%;
@@ -37,17 +52,42 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(38%) contrast(120%) saturate(70%);
-      transform: scale(1.04);
+      filter:
+        grayscale(100%)
+        brightness(28%)
+        contrast(135%)
+        saturate(0%)
+        blur(.3px);
+      transform: scale(1.05);
+      animation: slowZoom 24s ease-in-out infinite alternate;
     }
 
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(circle, rgba(0,0,0,0.1) 25%, rgba(0,0,0,0.8) 100%),
-        linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.9));
       z-index: 1;
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(0,0,0,.35),
+          rgba(0,0,0,.55),
+          rgba(0,0,0,.92)
+        );
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(0,0,0,0) 28%,
+          rgba(0,0,0,.35) 62%,
+          rgba(0,0,0,.85) 100%
+        );
     }
 
     .hero-content {
@@ -63,24 +103,28 @@
     }
 
     .eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: 0.35em;
+      color: #999;
       text-transform: uppercase;
-      color: #bbb;
-      margin-bottom: 20px;
+      letter-spacing: .45em;
+      font-size: .72rem;
+      margin-bottom: 22px;
     }
 
     h1 {
-      font-size: clamp(3rem, 10vw, 8rem);
-      letter-spacing: 0.08em;
+      font-size: clamp(3.5rem, 9vw, 7rem);
+      font-weight: 600;
+      letter-spacing: .05em;
+      line-height: .95;
+      margin-bottom: 22px;
       text-transform: uppercase;
-      margin-bottom: 18px;
     }
 
     .tagline {
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      color: #e5e5e5;
-      margin-bottom: 38px;
+      font-size: 1.45rem;
+      color: #d9d9d9;
+      font-weight: 300;
+      letter-spacing: .03em;
+      margin-bottom: 46px;
     }
 
     .buttons {
@@ -188,6 +232,16 @@
       font-size: 1.05rem;
     }
 
+    @keyframes slowZoom {
+      0% {
+        transform: scale(1.05);
+      }
+
+      100% {
+        transform: scale(1.10);
+      }
+    }
+
     @media (max-width: 850px) {
       .poster-section {
         grid-template-columns: 1fr;
@@ -205,6 +259,15 @@
 
       section {
         padding: 75px 6%;
+      }
+
+      .eyebrow {
+        letter-spacing: .25em;
+        font-size: .65rem;
+      }
+
+      .tagline {
+        font-size: 1.15rem;
       }
     }
   </style>
