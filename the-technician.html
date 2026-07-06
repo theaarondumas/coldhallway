@@ -17,131 +17,116 @@
     }
 
     body {
-      background: #050505;
+      background: #000;
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
       overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .05;
-      z-index: 999;
-      background-image:
-        repeating-radial-gradient(circle at 0 0,
-        transparent 0,
-        rgba(255,255,255,.2) 1px,
-        transparent 2px);
-      mix-blend-mode: soft-light;
-    }
-
     .hero {
       position: relative;
       width: 100%;
-      height: 100vh;
+      min-height: 100vh;
       overflow: hidden;
       background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 6%;
     }
 
     .hero-video {
-      position: absolute;
+      position: fixed;
       inset: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
+
       filter:
         grayscale(100%)
-        brightness(28%)
-        contrast(135%)
-        saturate(0%)
-        blur(.3px);
-      transform: scale(1.05);
-      animation: slowZoom 24s ease-in-out infinite alternate;
+        brightness(22%)
+        contrast(145%)
+        sepia(18%)
+        hue-rotate(165deg)
+        saturate(130%);
+
+      transform: scale(1.08);
+      z-index: 0;
     }
 
     .hero-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(0,0,0,.35),
-          rgba(0,0,0,.55),
-          rgba(0,0,0,.92)
-        );
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
+      position: fixed;
       inset: 0;
       z-index: 1;
       pointer-events: none;
       background:
-        radial-gradient(
-          circle at center,
-          rgba(0,0,0,0) 28%,
-          rgba(0,0,0,.35) 62%,
-          rgba(0,0,0,.85) 100%
-        );
+        radial-gradient(circle at center,
+          rgba(0,0,0,0.1) 20%,
+          rgba(0,0,0,0.55) 60%,
+          rgba(0,0,0,0.95) 100%),
+        linear-gradient(to bottom,
+          rgba(0,0,0,0.25),
+          rgba(0,0,0,0.85));
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: minmax(280px, 430px) 1fr;
+      gap: 70px;
       align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
+    }
+
+    .poster {
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 30px 100px rgba(0,0,0,0.85);
+    }
+
+    .info {
+      max-width: 620px;
     }
 
     .eyebrow {
-      color: #999;
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
       text-transform: uppercase;
-      letter-spacing: .45em;
-      font-size: .72rem;
+      color: #aaa;
       margin-bottom: 22px;
     }
 
-    h1 {
-      font-size: clamp(3.5rem, 9vw, 7rem);
-      font-weight: 600;
-      letter-spacing: .05em;
-      line-height: .95;
-      margin-bottom: 22px;
+    .title {
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      line-height: 0.95;
       text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 26px;
     }
 
-    .tagline {
-      font-size: 1.45rem;
-      color: #d9d9d9;
-      font-weight: 300;
-      letter-spacing: .03em;
-      margin-bottom: 46px;
+    .logline {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #d0d0d0;
+      margin-bottom: 34px;
     }
 
     .buttons {
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      justify-content: center;
     }
 
     .btn {
       color: #fff;
       text-decoration: none;
-      border: 1px solid rgba(255,255,255,0.75);
-      padding: 14px 30px;
+      border: 1px solid rgba(255,255,255,0.7);
+      padding: 14px 28px;
       border-radius: 999px;
       letter-spacing: 0.14em;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       text-transform: uppercase;
       background: rgba(0,0,0,0.35);
       transition: 0.25s ease;
@@ -152,48 +137,20 @@
       color: #000;
     }
 
-    section {
-      padding: 100px 8%;
-    }
-
-    .poster-section {
-      display: grid;
-      grid-template-columns: 420px 1fr;
-      gap: 70px;
-      align-items: center;
-      background: #070707;
-    }
-
-    .poster-section img {
-      width: 100%;
-      border-radius: 6px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.75);
-    }
-
-    .copy h2 {
-      font-size: clamp(2.4rem, 6vw, 5rem);
-      text-transform: uppercase;
-      margin-bottom: 25px;
-      letter-spacing: 0.04em;
-    }
-
-    .copy p {
-      color: #ccc;
-      font-size: 1.1rem;
-      line-height: 1.8;
-      max-width: 680px;
-    }
-
     .stills {
+      position: relative;
+      z-index: 2;
       background: #050505;
+      padding: 100px 8%;
     }
 
     .stills h2 {
       text-align: center;
-      font-size: 2rem;
+      font-size: 1.4rem;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.22em;
       margin-bottom: 45px;
+      color: #ddd;
     }
 
     .still-grid {
@@ -216,8 +173,11 @@
     }
 
     .contact {
+      position: relative;
+      z-index: 2;
       text-align: center;
       background: #0b0b0b;
+      padding: 100px 8%;
     }
 
     .contact h2 {
@@ -232,42 +192,28 @@
       font-size: 1.05rem;
     }
 
-    @keyframes slowZoom {
-      0% {
-        transform: scale(1.05);
-      }
-
-      100% {
-        transform: scale(1.10);
-      }
-    }
-
     @media (max-width: 850px) {
-      .poster-section {
+      .hero {
+        padding: 45px 6%;
+      }
+
+      .hero-content {
         grid-template-columns: 1fr;
+        gap: 36px;
         text-align: center;
       }
 
-      .poster-section img {
-        max-width: 380px;
+      .poster {
+        max-width: 360px;
         margin: 0 auto;
       }
 
-      .copy p {
+      .info {
         margin: 0 auto;
       }
 
-      section {
-        padding: 75px 6%;
-      }
-
-      .eyebrow {
-        letter-spacing: .25em;
-        font-size: .65rem;
-      }
-
-      .tagline {
-        font-size: 1.15rem;
+      .buttons {
+        justify-content: center;
       }
     }
   </style>
@@ -285,33 +231,28 @@
       <div class="hero-overlay"></div>
 
       <div class="hero-content">
-        <div class="eyebrow">Cold Hallway Films Presents</div>
-        <h1>The Technician</h1>
-        <p class="tagline">Skills Save Lives.</p>
+        <img class="poster" src="assets/the-technician-poster.jpeg" alt="The Technician Poster">
 
-        <div class="buttons">
-          <a href="#poster" class="btn">More Info</a>
-          <a href="mailto:aardumas@gmail.com" class="btn">Contact</a>
+        <div class="info">
+          <div class="eyebrow">Cold Hallway Films Presents</div>
+
+          <h1 class="title">The Technician</h1>
+
+          <p class="logline">
+            When Tony Marciano, a humble hospital supply technician working the night shift,
+            stops a violent hospital break-in, his hidden instincts as a fighter are revealed.
+            The patient he saves draws him into a covert war against a powerful criminal network.
+          </p>
+
+          <div class="buttons">
+            <a href="#stills" class="btn">Production Stills</a>
+            <a href="mailto:aardumas@gmail.com" class="btn">Contact</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="poster" class="poster-section">
-      <div>
-        <img src="assets/the-technician-poster.jpeg" alt="The Technician Poster">
-      </div>
-
-      <div class="copy">
-        <h2>Tony Marciano</h2>
-        <p>
-          When Tony Marciano, a humble hospital supply technician working the night shift,
-          stops a violent hospital break-in, his hidden instincts as a fighter are revealed.
-          The patient he saves draws him into a covert war against a powerful criminal network.
-        </p>
-      </div>
-    </section>
-
-    <section class="stills">
+    <section id="stills" class="stills">
       <h2>Production Stills</h2>
 
       <div class="still-grid">
