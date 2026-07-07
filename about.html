@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Cold Hallway Films</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background:
+        radial-gradient(circle at 50% 18%, rgba(60,82,88,.24), transparent 36%),
+        linear-gradient(180deg, #020505 0%, #000 100%);
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 135px,
+          rgba(205,230,235,.035) 136px,
+          rgba(205,230,235,.035) 144px,
+          transparent 145px,
+          transparent 280px
+        );
+      opacity: .7;
+      animation: fluorescentBreath 5s ease-in-out infinite;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: -50% 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(210,240,255,0) 36%,
+          rgba(210,240,255,.10) 49%,
+          rgba(255,255,255,.055) 52%,
+          rgba(210,240,255,0) 64%,
+          transparent 100%
+        );
+      mix-blend-mode: screen;
+      animation: hallwaySweep 4s linear infinite;
+    }
+
+    @keyframes fluorescentBreath {
+      0%, 100% { opacity: .42; filter: brightness(.9); }
+      50% { opacity: .9; filter: brightness(1.15); }
+    }
+
+    @keyframes hallwaySweep {
+      0% { transform: translateY(-70%); opacity: 0; }
+      12% { opacity: .45; }
+      50% { opacity: .8; }
+      88% { opacity: .45; }
+      100% { transform: translateY(70%); opacity: 0; }
+    }
+
+    @keyframes coldGlow {
+      0%, 92%, 100% { color: #ffffff; text-shadow: none; }
+      95% {
+        color: #dff8ff;
+        text-shadow:
+          0 0 10px rgba(110,225,255,.65),
+          0 0 22px rgba(70,190,255,.45),
+          0 0 36px rgba(0,170,255,.28);
+      }
+    }
+
+    main {
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-glow {
+      animation: coldGlow 4s infinite;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 110px 8%;
+    }
+
+    .back {
+      display: inline-block;
+      color: #9fb0b5;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: .72rem;
+      margin-bottom: 80px;
+    }
+
+    .back:hover {
+      color: #fff;
+    }
+
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .eyebrow {
+      font-size: .72rem;
+      letter-spacing: .42em;
+      text-transform: uppercase;
+      color: #aebabe;
+      margin-bottom: 26px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 9vw, 7rem);
+      line-height: .9;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 34px;
+    }
+
+    .tagline {
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      color: #d7dddd;
+      line-height: 1.4;
+      max-width: 760px;
+    }
+
+    section {
+      padding: 80px 0;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+
+    h2 {
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .28em;
+      color: #aebabe;
+      margin-bottom: 34px;
+    }
+
+    p {
+      color: #d0d6d8;
+      font-size: 1.08rem;
+      line-height: 1.85;
+      margin-bottom: 22px;
+    }
+
+    strong {
+      color: #fff;
+    }
+
+    .statement {
+      font-size: clamp(1.5rem, 4vw, 2.7rem);
+      line-height: 1.25;
+      color: #fff;
+      margin: 36px 0;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 26px;
+      margin-top: 30px;
+    }
+
+    .value {
+      border-top: 1px solid rgba(255,255,255,.18);
+      padding-top: 22px;
+    }
+
+    .value h3 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      margin-bottom: 12px;
+    }
+
+    .value p {
+      font-size: .95rem;
+      color: #bfc8cb;
+      line-height: 1.65;
+    }
+
+    .slate-item {
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .slate-item h3 {
+      font-size: clamp(1.6rem, 4vw, 3rem);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 10px;
+    }
+
+    .slate-item small {
+      color: #8fa0a5;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      display: block;
+      margin-bottom: 18px;
+    }
+
+    .footer {
+      text-align: center;
+      padding-bottom: 80px;
+    }
+
+    .footer h2 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      letter-spacing: .06em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .footer p {
+      color: #9fb0b5;
+      font-size: .95rem;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 850px) {
+      .page {
+        padding: 80px 7%;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+
+    <a class="back" href="the-technician.html">← Back to The Technician</a>
+
+    <section class="hero">
+      <div class="eyebrow logo-glow">Cold Hallway Films</div>
+      <h1>About</h1>
+      <p class="tagline">Built with discipline. Told with purpose.</p>
+    </section>
+
+    <section>
+      <h2>Introduction</h2>
+      <p><strong>Cold Hallway Films is an independent production company based in Los Angeles dedicated to original cinematic storytelling.</strong></p>
+
+      <p>Founded by Filipino American filmmaker Aaron Dumas, the company develops original feature films rooted in <strong>restraint, consequence, and precision</strong> — bringing a grounded cinematic approach to action, drama, and suspense.</p>
+
+      <p>Rather than relying on spectacle alone, our stories are built through character, tension, visual storytelling, and emotional truth.</p>
+
+      <p>We believe the most memorable moments are not always the loudest. They are the ones that feel inevitable.</p>
+    </section>
+
+    <section>
+      <h2>Our Philosophy</h2>
+      <p>We believe filmmaking is an exercise in restraint.</p>
+      <p>The camera moves with purpose. Silence carries weight. Violence has consequence. Performance comes before spectacle.</p>
+      <p>Every creative decision should deepen character rather than distract from it.</p>
+      <p>Whether inside a dim hospital corridor, on a sunlit racing circuit, or within the streets of Los Angeles, our stories explore ordinary people facing extraordinary circumstances — where discipline, sacrifice, and resilience ultimately define who they become.</p>
+    </section>
+
+    <section>
+      <h2>Our Mission</h2>
+      <p>To develop original feature films that combine cinematic craftsmanship with emotional authenticity.</p>
+      <p>We strive to tell stories that respect the intelligence of the audience — where restraint creates tension, precision creates impact, and consequence gives every decision meaning.</p>
+      <p>Cold Hallway Films is committed to building a slate of original films that endure beyond opening weekend through timeless storytelling and disciplined filmmaking.</p>
+    </section>
+
+    <section>
+      <h2>The Foundation</h2>
+
+      <div class="values">
+        <div class="value"><h3>Truth</h3><p>Honest storytelling grounded in authentic human experience.</p></div>
+        <div class="value"><h3>Integrity</h3><p>Doing what is right creatively and professionally, even when no one is watching.</p></div>
+        <div class="value"><h3>Authenticity</h3><p>Creating films that feel lived-in, emotionally honest, and true to their world.</p></div>
+        <div class="value"><h3>Transparency</h3><p>Building relationships through openness, trust, and accountability.</p></div>
+        <div class="value"><h3>Excellence</h3><p>Pursuing the highest standard of craftsmanship in every frame.</p></div>
+        <div class="value"><h3>Discipline</h3><p>Believing consistency and preparation create lasting results.</p></div>
+        <div class="value"><h3>Respect</h3><p>Valuing every collaborator and recognizing filmmaking as a collective effort.</p></div>
+        <div class="value"><h3>Faith</h3><p>Trusting the creative process with humility, perseverance, and hope.</p></div>
+        <div class="value"><h3>Grit</h3><p>Continuing forward through adversity with resilience and determination.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Current Slate</h2>
+
+      <div class="slate-item">
+        <h3>The Technician</h3>
+        <small>Grounded Action Thriller — Proof of Concept Complete</small>
+        <p>A hospital supply technician discovers his hidden instincts after stopping a violent hospital break-in, drawing him into a covert war against a powerful criminal organization.</p>
+      </div>
+
+      <div class="slate-item">
+        <h3>Batangas Racer</h3>
+        <small>Drama — Screenplay in Development</small>
+        <p>A father-and-son racing drama exploring discipline, legacy, and the pursuit of excellence against the backdrop of Filipino motorsport culture.</p>
+      </div>
+
+      <div class="slate-item">
+        <h3>Darkside</h3>
+        <small>Crime Thriller — Screenplay in Development</small>
+        <p>A grounded thriller examining grief, identity, and the lasting consequences of violence in Los Angeles.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Our Approach</h2>
+      <p>Every story begins with a question.</p>
+      <p>Not — <strong>How can this be bigger?</strong></p>
+      <p>But — <strong>How can this be more truthful?</strong></p>
+      <p>Action exists to reveal character. Conflict exists to create transformation. Visuals exist to serve emotion.</p>
+
+      <p class="statement">Every frame should have intention. Every moment should earn its place.</p>
+
+      <p>That philosophy guides every Cold Hallway Films production.</p>
+    </section>
+
+    <section>
+      <h2>The Founder</h2>
+      <p><strong>Aaron Dumas</strong> is a Filipino American filmmaker, actor, and screenwriter based in Los Angeles.</p>
+      <p>Drawing from his experience in performance, action training, and independent filmmaking, he founded Cold Hallway Films to develop original feature films that combine grounded realism with cinematic storytelling.</p>
+      <p>His work is driven by disciplined craftsmanship, visual precision, and stories that value emotional truth over spectacle.</p>
+    </section>
+
+    <section>
+      <h2>Looking Forward</h2>
+      <p>Cold Hallway Films is actively developing a slate of original feature films while building long-term creative partnerships with producers, investors, actors, and collaborators who believe in thoughtful, character-driven storytelling.</p>
+      <p>As the studio grows, our commitment remains unchanged: to tell stories with honesty, to pursue excellence without compromise, and to create films that endure.</p>
+    </section>
+
+    <section class="footer">
+      <h2 class="logo-glow">Cold Hallway Films</h2>
+      <p>Built with discipline. Told with purpose.</p>
+      <p>Los Angeles, California</p>
+      <p>© Cold Hallway Films</p>
+    </section>
+
+  </main>
+</body>
+</html>
