@@ -71,6 +71,48 @@
       100% { transform: translateY(70%); opacity: 0; }
     }
 
+    @keyframes coldGlow {
+      0%, 92%, 100% {
+        color: #ffffff;
+        text-shadow: none;
+      }
+
+      93% {
+        color: #f8fdff;
+        text-shadow:
+          0 0 6px rgba(120,220,255,.35),
+          0 0 14px rgba(90,200,255,.25);
+      }
+
+      94% {
+        color: #ffffff;
+        text-shadow: none;
+      }
+
+      95% {
+        color: #dff8ff;
+        text-shadow:
+          0 0 10px rgba(110,225,255,.65),
+          0 0 22px rgba(70,190,255,.45),
+          0 0 36px rgba(0,170,255,.28);
+      }
+
+      96% {
+        color: #ffffff;
+        text-shadow: none;
+      }
+
+      97% {
+        color: #eefcff;
+        text-shadow:
+          0 0 8px rgba(110,225,255,.45);
+      }
+    }
+
+    .logo-glow {
+      animation: coldGlow 4s infinite;
+    }
+
     main { position: relative; z-index: 2; }
 
     .hero {
@@ -289,7 +331,7 @@
         <img class="poster" src="assets/the-technician-poster.jpeg" alt="The Technician Poster">
 
         <div class="info">
-          <div class="eyebrow">Cold Hallway Films Presents</div>
+          <div class="eyebrow logo-glow">Cold Hallway Films Presents</div>
           <h1 class="title">The Technician</h1>
 
           <p class="logline">
@@ -319,7 +361,7 @@
     </section>
 
     <section class="development">
-      <div class="section-label">Projects in Development</div>
+      <div class="section-label logo-glow">Projects in Development</div>
 
       <div class="project-list">
         <div class="project-item">
@@ -358,7 +400,7 @@
     </section>
 
     <section class="contact">
-      <h2>Cold Hallway Films</h2>
+      <h2 class="logo-glow">Cold Hallway Films</h2>
       <p>Industry inquiries, producers, investors, and collaborators.</p>
       <a href="mailto:aardumas@gmail.com" class="btn">Contact</a>
     </section>
