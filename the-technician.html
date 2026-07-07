@@ -374,6 +374,69 @@
         transform: none;
       }
     }
+.cursor-dot,
+.cursor-halo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
+}
+
+.cursor-halo {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(130,225,255,.45);
+  box-shadow: 0 0 18px rgba(90,200,255,.18);
+  transition: width .2s ease, height .2s ease, opacity .2s ease;
+  opacity: .65;
+}
+
+.cursor-halo.active {
+  width: 58px;
+  height: 58px;
+  opacity: 1;
+}
+
+.page-fade {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity .45s ease;
+}
+
+.page-fade.active {
+  opacity: 1;
+}
+
+.sound-toggle {
+  position: fixed;
+  top: 22px;
+  right: 24px;
+  z-index: 9998;
+  background: rgba(0,0,0,.35);
+  color: white;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 999px;
+  padding: 9px 14px;
+  font-size: .7rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+    
   </style>
 </head>
 
@@ -462,5 +525,95 @@
       <a href="mailto:aardumas@gmail.com" class="btn">Contact</a>
     </section>
   </main>
+  <div class="cursor-dot"></div>
+<div class="cursor-halo"></div>
+<div class="page-fade"></div>
+<button class="sound-toggle">Ambient</button>
+
+<script>
+  const dot = document.querySelector(".cursor-dot");
+  const halo = document.querySelector(".cursor-halo");
+  const fade = document.querySelector(".page-fade");
+  const soundBtn = document.querySelector(".sound-toggle");
+
+  document.addEventListener("mousemove", e => {
+    dot.style.left = e.clientX + "px";
+    dot.style.top = e.clientY + "px";
+    halo.style.left = e.clientX + "px";
+    halo.style.top = e.clientY + "px";
+  });
+
+  document.querySelectorAll("a, button, .poster, .project-item").forEach(el => {
+    el.addEventListener("mouseenter", () => halo.classList.add("active"));
+    el.addEventListener("mouseleave", () => halo.classList.remove("active"));
+  });
+
+  document.querySelectorAll("a[href]").forEach(link => {
+    const href = link.getAttribute("href");
+
+    if (
+      href &&
+      !href.startsWith("#") &&
+      !href.startsWith("mailto:") &&
+      !href.startsWith("tel:")
+    ) {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        fade.classList.add("active");
+        setTimeout(() => {
+          window.location.href = href;
+        }, 450);
+      });
+    }
+  });
+
+  let audioCtx;
+  let hum;
+  let gain;
+  let soundOn = false;
+
+  function startAmbient() {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    hum = audioCtx.createOscillator();
+    gain = audioCtx.createGain();
+
+    hum.type = "sine";
+    hum.frequency.value = 58;
+    gain.gain.value = 0.018;
+
+    hum.connect(gain);
+    gain.connect(audioCtx.destination);
+    hum.start();
+
+    soundOn = true;
+    soundBtn.textContent = "Ambient On";
+    localStorage.setItem("coldhallwaySound", "on");
+  }
+
+  function stopAmbient() {
+    if (audioCtx) {
+      audioCtx.close();
+    }
+
+    soundOn = false;
+    soundBtn.textContent = "Ambient Off";
+    localStorage.setItem("coldhallwaySound", "off");
+  }
+
+  soundBtn.addEventListener("click", () => {
+    if (!soundOn) {
+      startAmbient();
+    } else {
+      stopAmbient();
+    }
+  });
+
+  if (localStorage.getItem("coldhallwaySound") === "on") {
+    soundBtn.textContent = "Ambient";
+  } else {
+    soundBtn.textContent = "Ambient Off";
+  }
+</script>
 </body>
 </html>
