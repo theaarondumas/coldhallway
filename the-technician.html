@@ -11,71 +11,67 @@
 
     body {
       background:
-        radial-gradient(circle at 50% 15%, rgba(55,70,72,.22), transparent 38%),
-        linear-gradient(180deg, #020404 0%, #000 100%);
+        radial-gradient(circle at 50% 18%, rgba(60,82,88,.24), transparent 36%),
+        linear-gradient(180deg, #020505 0%, #000 100%);
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
       overflow-x: hidden;
-      animation: fluorescentPulse 6s ease-in-out infinite;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          transparent 0px,
+          transparent 135px,
+          rgba(205,230,235,.035) 136px,
+          rgba(205,230,235,.035) 144px,
+          transparent 145px,
+          transparent 280px
+        );
+      opacity: .7;
+      animation: fluorescentBreath 5s ease-in-out infinite;
     }
 
     body::after {
       content: "";
       position: fixed;
-      inset: -40%;
+      inset: -50% 0;
       pointer-events: none;
-      z-index: 999;
+      z-index: 0;
       background:
         linear-gradient(
-          180deg,
+          to bottom,
           transparent 0%,
-          rgba(255,255,255,.02) 44%,
-          rgba(220,245,255,.09) 50%,
-          rgba(255,255,255,.02) 56%,
+          rgba(210,240,255,0) 36%,
+          rgba(210,240,255,.10) 49%,
+          rgba(255,255,255,.055) 52%,
+          rgba(210,240,255,0) 64%,
           transparent 100%
         );
       mix-blend-mode: screen;
-      animation: hallwayReflection 4s linear infinite;
+      animation: hallwaySweep 4s linear infinite;
     }
 
-    @keyframes fluorescentPulse {
-      0%   { filter: brightness(.96) saturate(.96); }
-      10%  { filter: brightness(1); }
-      18%  { filter: brightness(.93); }
-      32%  { filter: brightness(.98); }
-      52%  { filter: brightness(.95); }
-      76%  { filter: brightness(1); }
-      100% { filter: brightness(.96); }
+    @keyframes fluorescentBreath {
+      0%, 100% { opacity: .42; filter: brightness(.9); }
+      50% { opacity: .9; filter: brightness(1.15); }
     }
 
-    @keyframes hallwayReflection {
-      0% {
-        transform: translateY(-120%) skewY(-1deg);
-        opacity: 0;
-      }
-
-      8% {
-        opacity: .55;
-      }
-
-      50% {
-        opacity: .85;
-      }
-
-      92% {
-        opacity: .55;
-      }
-
-      100% {
-        transform: translateY(120%) skewY(-1deg);
-        opacity: 0;
-      }
+    @keyframes hallwaySweep {
+      0% { transform: translateY(-70%); opacity: 0; }
+      12% { opacity: .45; }
+      50% { opacity: .8; }
+      88% { opacity: .45; }
+      100% { transform: translateY(70%); opacity: 0; }
     }
 
-    main {
-      position: relative;
-      z-index: 1;
-    }
+    main { position: relative; z-index: 2; }
 
     .hero {
       min-height: 100vh;
@@ -150,7 +146,7 @@
 
     .stills {
       padding: 110px 8%;
-      background: rgba(0,0,0,.52);
+      background: rgba(0,0,0,.56);
       border-top: 1px solid rgba(255,255,255,.05);
     }
 
@@ -188,7 +184,7 @@
     .contact {
       text-align: center;
       padding: 120px 8%;
-      background: linear-gradient(to bottom, rgba(0,0,0,.65), #000);
+      background: linear-gradient(to bottom, rgba(0,0,0,.72), #000);
     }
 
     .contact h2 {
@@ -236,7 +232,6 @@
 
         <div class="info">
           <div class="eyebrow">Cold Hallway Films Presents</div>
-
           <h1 class="title">The Technician</h1>
 
           <p class="logline">
@@ -255,7 +250,6 @@
 
     <section id="stills" class="stills">
       <h2>Production Stills</h2>
-
       <div class="still-grid">
         <img src="assets/still-tony.jpeg" alt="Tony Marciano">
         <img src="assets/still-faceoff.jpeg" alt="Faceoff">
