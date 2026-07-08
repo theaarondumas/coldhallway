@@ -437,39 +437,46 @@
   cursor: pointer;
 }
 
-    .signature {
-    margin-top: 45px;
-    text-align: center;
+    .signature{
+    margin-top:55px;
+    text-align:center;
 }
 
-.signature img {
-    width: 220px;
-    max-width: 65%;
-    opacity: .72;
-    transition: .35s ease;
+.signature img{
+    width:240px;
+    max-width:70%;
+    opacity:.88;
+    display:block;
+    margin:0 auto;
     filter:
-        drop-shadow(0 0 8px rgba(255,255,255,.06));
+        brightness(.92)
+        drop-shadow(0 0 8px rgba(255,255,255,.05));
+    transition:.35s ease;
 }
 
-.signature img:hover {
-    opacity: .95;
-    transform: translateY(-2px);
+.signature img:hover{
+    opacity:1;
+    transform:translateY(-2px);
+    filter:
+        brightness(1)
+        drop-shadow(0 0 12px rgba(150,220,255,.10));
 }
 
-.signature-name {
-    margin-top: 18px;
-    font-size: .82rem;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: #c7d0d2;
+.signature-name{
+    margin-top:22px;
+    color:#d7dddd;
+    font-size:.85rem;
+    letter-spacing:.30em;
+    text-transform:uppercase;
 }
 
-.signature-title {
-    margin-top: 6px;
-    font-size: .72rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: #7f9196;
+.signature-title{
+    margin-top:8px;
+    color:#7f9196;
+    font-size:.70rem;
+    letter-spacing:.24em;
+    text-transform:uppercase;
+}
 }
   </style>
 </head>
