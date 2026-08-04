@@ -3,17 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Technician | Cold Hallway Films</title>
+  <title>Investor Highlights | The Technician | Cold Hallway Films</title>
+  <meta
+    name="description"
+    content="Investor highlights, production budget, comparable films, financing strategy, and revenue strategy for The Technician."
+  />
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    :root {
+      --bg: #020505;
+      --bg-deep: #000;
+      --text: #fff;
+      --muted: #c7d0d2;
+      --muted-2: #819499;
+      --line: rgba(255,255,255,.13);
+      --line-soft: rgba(255,255,255,.06);
+      --cyan: #82e1ff;
+      --cyan-soft: rgba(110,225,255,.16);
+      --pink: #ee5dd5;
+      --panel: rgba(0,0,0,.36);
+      --max: 1180px;
+    }
 
     body {
       background:
-        radial-gradient(circle at 50% 18%, rgba(60,82,88,.24), transparent 36%),
-        linear-gradient(180deg, #020505 0%, #000 100%);
-      color: #fff;
+        radial-gradient(circle at 50% 14%, rgba(60,82,88,.24), transparent 36%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       overflow-x: hidden;
     }
@@ -34,52 +60,86 @@
           transparent 145px,
           transparent 280px
         );
-      opacity: .7;
+      opacity: .68;
       animation: fluorescentBreath 5s ease-in-out infinite;
     }
 
+    /* Cold Hallway ambient light sweep — runs every 3 seconds */
     body::after {
       content: "";
       position: fixed;
-      inset: -50% 0;
+      inset: -55% 0;
       pointer-events: none;
       z-index: 0;
       background:
         linear-gradient(
           to bottom,
           transparent 0%,
-          rgba(210,240,255,0) 36%,
-          rgba(210,240,255,.10) 49%,
-          rgba(255,255,255,.055) 52%,
-          rgba(210,240,255,0) 64%,
+          rgba(210,240,255,0) 35%,
+          rgba(210,240,255,.11) 48%,
+          rgba(255,255,255,.06) 51%,
+          rgba(210,240,255,.03) 56%,
+          rgba(210,240,255,0) 66%,
           transparent 100%
         );
       mix-blend-mode: screen;
-      animation: hallwaySweep 4s linear infinite;
+      animation: hallwaySweep 3s linear infinite alternate;
     }
 
     @keyframes fluorescentBreath {
-      0%, 100% { opacity: .42; filter: brightness(.9); }
-      50% { opacity: .9; filter: brightness(1.15); }
+      0%, 100% {
+        opacity: .42;
+        filter: brightness(.9);
+      }
+
+      50% {
+        opacity: .9;
+        filter: brightness(1.15);
+      }
     }
 
     @keyframes hallwaySweep {
-      0% { transform: translateY(-70%); opacity: 0; }
-      12% { opacity: .45; }
-      50% { opacity: .8; }
-      88% { opacity: .45; }
-      100% { transform: translateY(70%); opacity: 0; }
+      0% {
+        transform: translateY(-72%);
+        opacity: 0;
+      }
+
+      12% {
+        opacity: .42;
+      }
+
+      50% {
+        opacity: .82;
+      }
+
+      88% {
+        opacity: .42;
+      }
+
+      100% {
+        transform: translateY(72%);
+        opacity: 0;
+      }
     }
 
     @keyframes coldGlow {
-      0%, 92%, 100% { color: #ffffff; text-shadow: none; }
+      0%, 92%, 100% {
+        color: #fff;
+        text-shadow: none;
+      }
+
       93% {
         color: #f8fdff;
         text-shadow:
           0 0 6px rgba(120,220,255,.35),
           0 0 14px rgba(90,200,255,.25);
       }
-      94% { color: #ffffff; text-shadow: none; }
+
+      94% {
+        color: #fff;
+        text-shadow: none;
+      }
+
       95% {
         color: #dff8ff;
         text-shadow:
@@ -87,28 +147,104 @@
           0 0 22px rgba(70,190,255,.45),
           0 0 36px rgba(0,170,255,.28);
       }
-      96% { color: #ffffff; text-shadow: none; }
+
+      96% {
+        color: #fff;
+        text-shadow: none;
+      }
+
       97% {
         color: #eefcff;
         text-shadow: 0 0 8px rgba(110,225,255,.45);
       }
     }
 
-    .logo-glow { animation: coldGlow 4s infinite; }
+    .logo-glow {
+      animation: coldGlow 4s infinite;
+    }
 
-    main { position: relative; z-index: 2; }
+    main,
+    header,
+    nav,
+    footer {
+      position: relative;
+      z-index: 2;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line-soft);
+      background: rgba(0,0,0,.7);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar-inner {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      color: #fff;
+      text-decoration: none;
+      font-size: .72rem;
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .sound-toggle,
+    .back-btn {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 999px;
+      padding: 10px 15px;
+      background: rgba(0,0,0,.34);
+      font-size: .68rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .sound-toggle:hover,
+    .back-btn:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
 
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
       padding: 80px 6%;
+      border-bottom: 1px solid var(--line-soft);
     }
 
     .hero-content {
       width: 100%;
-      max-width: 1180px;
+      max-width: var(--max);
+      margin: 0 auto;
       display: grid;
       grid-template-columns: minmax(280px, 430px) 1fr;
       gap: 80px;
@@ -140,25 +276,25 @@
     }
 
     .title {
-      font-size: clamp(2.8rem, 7vw, 6rem);
+      font-size: clamp(3rem, 7vw, 6rem);
       line-height: .95;
       text-transform: uppercase;
       letter-spacing: .04em;
       margin-bottom: 28px;
     }
 
-    .logline {
+    .intro {
+      max-width: 680px;
+      color: #d0d6d8;
       font-size: 1.08rem;
       line-height: 1.85;
-      color: #d0d6d8;
-      max-width: 640px;
       margin-bottom: 36px;
     }
 
     .buttons {
       display: flex;
-      gap: 16px;
       flex-wrap: wrap;
+      gap: 16px;
     }
 
     .btn {
@@ -179,156 +315,374 @@
       color: #000;
     }
 
-    .stills {
+    section {
       padding: 110px 8%;
-      background: rgba(0,0,0,.56);
-      border-top: 1px solid rgba(255,255,255,.05);
+      border-top: 1px solid var(--line-soft);
+      background: rgba(0,0,0,.54);
     }
 
-    .stills h2,
-    .section-label {
-      text-align: center;
-      font-size: 1.25rem;
-      text-transform: uppercase;
-      letter-spacing: .24em;
-      margin-bottom: 50px;
-      color: #d7dddd;
+    section:nth-of-type(even) {
+      background: rgba(0,0,0,.66);
     }
 
-    .still-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 18px;
-      max-width: 1200px;
+    .section-wrap {
+      max-width: 1050px;
       margin: 0 auto;
     }
 
-    .still-grid img {
+    .section-number {
+      color: var(--muted-2);
+      font-size: .72rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      font-size: clamp(2.1rem, 5vw, 4.6rem);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 18px;
+    }
+
+    .section-copy {
+      max-width: 720px;
+      color: #bec7c9;
+      line-height: 1.75;
+      margin-bottom: 44px;
+    }
+
+    .budget-layout {
+      display: grid;
+      grid-template-columns: minmax(300px, .82fr) minmax(0, 1.18fr);
+      gap: 54px;
+      align-items: start;
+    }
+
+    .chart-column {
+      position: sticky;
+      top: 100px;
+    }
+
+    .chart-wrap {
+      position: relative;
+      width: min(100%, 420px);
+      aspect-ratio: 1;
+      margin: 0 auto;
+    }
+
+    #budgetPie {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+    }
+
+    #budgetPie path {
+      cursor: pointer;
+      transform-box: fill-box;
+      transform-origin: center;
+      transition: transform .18s ease, filter .18s ease, opacity .18s ease;
+      outline: none;
+    }
+
+    #budgetPie path:hover,
+    #budgetPie path:focus-visible,
+    #budgetPie path.is-active {
+      transform: scale(1.045);
+      filter: drop-shadow(0 0 12px rgba(110,225,255,.42));
+    }
+
+    #budgetPie.has-active path:not(.is-active) {
+      opacity: .42;
+    }
+
+    .chart-center {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .chart-center strong {
       display: block;
-      border-radius: 5px;
-      opacity: .92;
-      box-shadow: 0 20px 60px rgba(0,0,0,.75);
-      transition: .3s ease;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      letter-spacing: .03em;
     }
 
-    .still-grid img:hover {
-      opacity: 1;
-      transform: scale(1.018);
-      box-shadow:
-        0 28px 80px rgba(0,0,0,.9),
-        0 0 30px rgba(110,225,255,.08);
-    }
-
-    .still-grid img:nth-child(1) {
-      grid-column: span 3;
-      grid-row: span 2;
-    }
-
-    .still-grid img:nth-child(2) {
-      grid-column: span 3;
-      grid-row: span 2;
-    }
-
-    .still-grid img:nth-child(3),
-    .still-grid img:nth-child(4),
-    .still-grid img:nth-child(5) {
-      grid-column: span 2;
-      min-height: 220px;
-    }
-
-    .development {
-      padding: 120px 8%;
-      background: rgba(0,0,0,.62);
-      border-top: 1px solid rgba(255,255,255,.06);
-    }
-
-    .project-list {
-      max-width: 980px;
-      margin: 0 auto;
-      border-top: 1px solid rgba(255,255,255,.14);
-    }
-
-    .project-item {
-      color: #fff;
-      text-decoration: none;
-      display: grid;
-      grid-template-columns: 80px 1fr 180px 34px;
-      gap: 30px;
-      padding: 36px 0;
-      border-bottom: 1px solid rgba(255,255,255,.14);
-      align-items: start;
-      transition: .25s ease;
-    }
-
-    .project-item:hover {
-      transform: translateX(8px);
-      border-bottom-color: rgba(130,225,255,.35);
-    }
-
-    .project-number,
-    .project-status {
-      color: #7f9499;
-      font-size: .78rem;
+    .chart-center span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted-2);
+      font-size: .66rem;
       letter-spacing: .18em;
       text-transform: uppercase;
     }
 
-    .project-title {
-      font-size: clamp(1.7rem, 4vw, 3rem);
+    .chart-readout {
+      min-height: 92px;
+      margin-top: 26px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .chart-readout strong {
+      display: block;
+      font-size: 1.05rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .chart-readout .amount {
+      display: block;
+      margin-top: 8px;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .chart-readout .share {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted-2);
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .budget-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .budget-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 150px 90px;
+      gap: 24px;
+      align-items: center;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      transition: .25s ease;
+      cursor: pointer;
+    }
+
+    .budget-row:hover,
+    .budget-row.is-active {
+      transform: translateX(8px);
+      border-bottom-color: rgba(130,225,255,.35);
+      background: linear-gradient(90deg, rgba(110,225,255,.05), transparent);
+    }
+
+    .budget-row .index,
+    .budget-row .percent {
+      color: var(--muted-2);
+      font-size: .72rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .budget-row .category {
+      font-size: clamp(1.15rem, 2.5vw, 1.8rem);
       text-transform: uppercase;
       letter-spacing: .05em;
-      margin-bottom: 14px;
+      font-weight: 700;
     }
 
-    .project-desc {
-      color: #c4ccce;
-      line-height: 1.7;
-      max-width: 620px;
+    .budget-row .value {
+      text-align: right;
+      font-size: 1.08rem;
+      font-weight: 700;
     }
 
-    .project-arrow {
-      color: #7f9499;
-      font-size: 1.6rem;
-      opacity: 0;
-      transform: translateX(-8px);
+    .budget-row .percent {
+      text-align: right;
+    }
+
+    .comparable-list,
+    .finance-list,
+    .revenue-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .comparable-item {
+      display: grid;
+      grid-template-columns: 70px 1fr 160px 160px;
+      gap: 28px;
+      align-items: start;
+      padding: 34px 0;
+      border-bottom: 1px solid var(--line);
       transition: .25s ease;
     }
 
-    .project-item:hover .project-arrow {
-      opacity: 1;
-      transform: translateX(0);
-      color: #dff8ff;
-      text-shadow: 0 0 12px rgba(90,200,255,.45);
+    .comparable-item:hover {
+      transform: translateX(8px);
+      border-bottom-color: rgba(130,225,255,.35);
     }
 
-    .contact {
+    .comp-number,
+    .comp-label {
+      color: var(--muted-2);
+      font-size: .74rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .comp-title {
+      font-size: clamp(1.7rem, 4vw, 3rem);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin-bottom: 12px;
+    }
+
+    .comp-desc {
+      max-width: 560px;
+      color: #c4ccce;
+      line-height: 1.65;
+    }
+
+    .metric {
+      text-align: right;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.2rem;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted-2);
+      font-size: .66rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .positioning {
+      margin-top: 38px;
+      padding: 28px 0 0 24px;
+      border-left: 2px solid var(--cyan);
+      color: #d8e2e4;
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .finance-item,
+    .revenue-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 28px;
+      align-items: center;
+      padding: 30px 0;
+      border-bottom: 1px solid var(--line);
+      transition: .25s ease;
+    }
+
+    .finance-item:hover,
+    .revenue-item:hover {
+      transform: translateX(8px);
+      border-bottom-color: rgba(130,225,255,.35);
+    }
+
+    .finance-title,
+    .revenue-title {
+      font-size: clamp(1.45rem, 3.5vw, 2.5rem);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    .finance-value {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .revenue-arrow {
+      color: var(--cyan);
+      font-size: 1.45rem;
+      text-shadow: 0 0 14px rgba(90,200,255,.38);
+    }
+
+    .contact-block {
       text-align: center;
-      padding: 120px 8%;
       background: linear-gradient(to bottom, rgba(0,0,0,.72), #000);
     }
 
-    .contact h2 {
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      margin-bottom: 18px;
+    .contact-block h2 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
       text-transform: uppercase;
       letter-spacing: .06em;
+      margin-bottom: 20px;
     }
 
-    .contact p {
+    .contact-block p {
       color: #aeb6b9;
-      margin-bottom: 32px;
-      font-size: 1.05rem;
+      max-width: 650px;
+      margin: 0 auto 30px;
+      line-height: 1.7;
     }
 
-    @media (max-width: 850px) {
-      .hero { padding: 55px 6%; }
+    .disclaimer {
+      max-width: 900px;
+      margin: 46px auto 0;
+      color: #68777a;
+      font-size: .72rem;
+      line-height: 1.75;
+    }
 
-      .hero-content {
+    .cursor-dot,
+    .cursor-halo {
+      position: fixed;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+    }
+
+    .cursor-dot {
+      width: 5px;
+      height: 5px;
+      background: #fff;
+      border-radius: 50%;
+    }
+
+    .cursor-halo {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(130,225,255,.45);
+      box-shadow: 0 0 18px rgba(90,200,255,.18);
+      transition: width .2s ease, height .2s ease, opacity .2s ease;
+      opacity: .65;
+    }
+
+    .cursor-halo.active {
+      width: 58px;
+      height: 58px;
+      opacity: 1;
+    }
+
+    .page-fade {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity .45s ease;
+    }
+
+    .page-fade.active {
+      opacity: 1;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        padding: 55px 6%;
+      }
+
+      .hero-content,
+      .budget-layout {
         grid-template-columns: 1fr;
-        gap: 38px;
+        gap: 42px;
         text-align: center;
       }
 
@@ -337,325 +691,628 @@
         margin: 0 auto;
       }
 
-      .logline {
+      .intro {
         margin-left: auto;
         margin-right: auto;
       }
 
-      .buttons { justify-content: center; }
-
-      .still-grid {
-        grid-template-columns: 1fr;
+      .buttons {
+        justify-content: center;
       }
 
-      .still-grid img,
-      .still-grid img:nth-child(1),
-      .still-grid img:nth-child(2),
-      .still-grid img:nth-child(3),
-      .still-grid img:nth-child(4),
-      .still-grid img:nth-child(5) {
-        grid-column: auto;
-        grid-row: auto;
-        min-height: auto;
+      .chart-column {
+        position: relative;
+        top: auto;
       }
 
-      .project-item {
+      .comparable-item {
         grid-template-columns: 1fr;
-        gap: 14px;
         text-align: center;
       }
 
-      .project-desc {
-        margin: 0 auto;
+      .metric {
+        text-align: center;
       }
 
-      .project-arrow {
-        opacity: 1;
-        transform: none;
+      .finance-item,
+      .revenue-item {
+        grid-template-columns: 1fr;
+        text-align: center;
       }
     }
-.cursor-dot,
-.cursor-halo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 10000;
-  transform: translate(-50%, -50%);
-}
 
-.cursor-dot {
-  width: 5px;
-  height: 5px;
-  background: white;
-  border-radius: 50%;
-}
+    @media (max-width: 650px) {
+      .shell {
+        width: min(var(--max), calc(100% - 26px));
+      }
 
-.cursor-halo {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  border: 1px solid rgba(130,225,255,.45);
-  box-shadow: 0 0 18px rgba(90,200,255,.18);
-  transition: width .2s ease, height .2s ease, opacity .2s ease;
-  opacity: .65;
-}
+      .topbar-inner {
+        min-height: 62px;
+      }
 
-.cursor-halo.active {
-  width: 58px;
-  height: 58px;
-  opacity: 1;
-}
+      .brand {
+        font-size: .62rem;
+        letter-spacing: .26em;
+      }
 
-.page-fade {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  transition: opacity .45s ease;
-}
+      .budget-row {
+        grid-template-columns: 44px 1fr auto;
+        gap: 14px;
+      }
 
-.page-fade.active {
-  opacity: 1;
-}
+      .budget-row .percent {
+        display: none;
+      }
 
-.sound-toggle {
-  position: fixed;
-  top: 22px;
-  right: 24px;
-  z-index: 9998;
-  background: rgba(0,0,0,.35);
-  color: white;
-  border: 1px solid rgba(255,255,255,.35);
-  border-radius: 999px;
-  padding: 9px 14px;
-  font-size: .7rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  cursor: pointer;
-}
+      .budget-row .value {
+        font-size: .96rem;
+      }
 
-    .signature{
-    margin-top:55px;
-    text-align:center;
-}
+      section {
+        padding: 82px 6%;
+      }
 
-.signature img{
-    width:240px;
-    max-width:70%;
-    opacity:.88;
-    display:block;
-    margin:0 auto;
-    filter:
-        brightness(.92)
-        drop-shadow(0 0 8px rgba(255,255,255,.05));
-    transition:.35s ease;
-}
+      .top-actions {
+        gap: 6px;
+      }
 
-.signature img:hover{
-    opacity:1;
-    transform:translateY(-2px);
-    filter:
-        brightness(1)
-        drop-shadow(0 0 12px rgba(150,220,255,.10));
-}
+      .sound-toggle,
+      .back-btn {
+        padding: 8px 11px;
+        font-size: .58rem;
+      }
+    }
 
-.signature-name{
-    margin-top:22px;
-    color:#d7dddd;
-    font-size:.85rem;
-    letter-spacing:.30em;
-    text-transform:uppercase;
-}
-
-.signature-title{
-    margin-top:8px;
-    color:#7f9196;
-    font-size:.70rem;
-    letter-spacing:.24em;
-    text-transform:uppercase;
-}
-}
+    @media (hover: none) {
+      .cursor-dot,
+      .cursor-halo {
+        display: none;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <nav class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand logo-glow" href="the-technician.html">Cold Hallway Films</a>
+
+      <div class="top-actions">
+        <a class="back-btn" href="the-technician.html">Back</a>
+        <button class="sound-toggle" type="button">Ambient Off</button>
+      </div>
+    </div>
+  </nav>
+
   <main>
-    <section class="hero">
+    <header class="hero">
       <div class="hero-content">
-        <img class="poster" src="assets/the-technician-poster.jpeg" alt="The Technician Poster">
+        <img
+          class="poster"
+          src="assets/the-technician-poster.jpeg"
+          alt="The Technician Poster"
+        />
 
         <div class="info">
           <div class="eyebrow logo-glow">Cold Hallway Films Presents</div>
-          <h1 class="title">The Technician</h1>
+          <h1 class="title">Investor Highlights</h1>
 
-          <p class="logline">
-            When Tony Marciano, a humble hospital supply technician working the night shift,
-            stops a violent hospital break-in, his hidden instincts as a fighter are revealed.
-            The patient he saves draws him into a covert war against a powerful criminal network.
+          <p class="intro">
+            A concise overview of the proposed production budget, creative and commercial
+            comparables, financing strategy, and revenue path for <em>The Technician</em>.
           </p>
 
           <div class="buttons">
-            <a href="#stills" class="btn">Production Stills</a>
-            <a href="about.html" class="btn">About</a>
-            <a href="mailto:aardumas@gmail.com" class="btn">Contact</a>
-            <a href="investor.html" class="btn">Investor Highlights</a>
+            <a class="btn" href="#budget">Production Budget</a>
+            <a class="btn" href="#comparables">Comparables</a>
+            <a class="btn" href="#financing">Financing</a>
+            <a class="btn" href="#revenue">Revenue</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="budget">
+      <div class="section-wrap">
+        <div class="section-number">01</div>
+        <h2 class="section-title">Production Budget</h2>
+        <p class="section-copy">
+          Estimated production budget: <strong>$800,000</strong>. Hover over a pie slice
+          or budget row to reveal the dollar amount and percentage allocation.
+        </p>
+
+        <div class="budget-layout">
+          <div class="chart-column">
+            <div class="chart-wrap">
+              <svg
+                id="budgetPie"
+                viewBox="0 0 220 220"
+                role="img"
+                aria-label="The Technician production budget pie chart"
+              ></svg>
+
+              <div class="chart-center">
+                <strong>$800K</strong>
+                <span>Total Budget</span>
+              </div>
+            </div>
+
+            <div class="chart-readout" id="chartReadout">
+              <strong>Hover over the chart</strong>
+              <span class="amount">$800,000</span>
+              <span class="share">Total proposed budget</span>
+            </div>
+          </div>
+
+          <div class="budget-list" id="budgetRows"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparables">
+      <div class="section-wrap">
+        <div class="section-number">02</div>
+        <h2 class="section-title">Comparable Films</h2>
+        <p class="section-copy">
+          Creative and commercial reference points showing established audience demand
+          for precision action, tactical protagonists, nocturnal atmosphere, and emotional stakes.
+        </p>
+
+        <div class="comparable-list">
+          <article class="comparable-item">
+            <div class="comp-number">01</div>
+            <div>
+              <h3 class="comp-title">John Wick</h3>
+              <p class="comp-desc">Precision action, disciplined world-building, and franchise potential.</p>
+            </div>
+            <div class="metric">
+              <strong>$20M</strong>
+              <span>Reported Budget</span>
+            </div>
+            <div class="metric">
+              <strong>$86.1M</strong>
+              <span>Worldwide Gross</span>
+            </div>
+          </article>
+
+          <article class="comparable-item">
+            <div class="comp-number">02</div>
+            <div>
+              <h3 class="comp-title">The Equalizer</h3>
+              <p class="comp-desc">Tactical realism, a controlled protagonist, and action driven by moral purpose.</p>
+            </div>
+            <div class="metric">
+              <strong>$55M</strong>
+              <span>Reported Budget</span>
+            </div>
+            <div class="metric">
+              <strong>$192.3M</strong>
+              <span>Worldwide Gross</span>
+            </div>
+          </article>
+
+          <article class="comparable-item">
+            <div class="comp-number">03</div>
+            <div>
+              <h3 class="comp-title">Collateral</h3>
+              <p class="comp-desc">Nocturnal urban atmosphere, grounded tension, and character-led suspense.</p>
+            </div>
+            <div class="metric">
+              <strong>$65M</strong>
+              <span>Reported Budget</span>
+            </div>
+            <div class="metric">
+              <strong>$220.2M</strong>
+              <span>Worldwide Gross</span>
+            </div>
+          </article>
+
+          <article class="comparable-item">
+            <div class="comp-number">04</div>
+            <div>
+              <h3 class="comp-title">Man on Fire</h3>
+              <p class="comp-desc">Emotional intensity, sacrifice, and personal stakes embedded inside action.</p>
+            </div>
+            <div class="metric">
+              <strong>$70M</strong>
+              <span>Reported Budget</span>
+            </div>
+            <div class="metric">
+              <strong>$130.8M</strong>
+              <span>Worldwide Gross</span>
+            </div>
+          </article>
+        </div>
+
+        <div class="positioning">
+          <em>The Technician</em> combines the precision action of <em>John Wick</em>,
+          the tactical realism of <em>The Equalizer</em>, the atmosphere of <em>Collateral</em>,
+          and the emotional intensity of <em>Man on Fire</em>—while introducing an original hero
+          from a world rarely explored in action cinema.
+        </div>
+      </div>
+    </section>
+
+    <section id="financing">
+      <div class="section-wrap">
+        <div class="section-number">03</div>
+        <h2 class="section-title">Financing Strategy</h2>
+        <p class="section-copy">
+          A proposed blended capital strategy combining private equity, executive producers,
+          crowdfunding, and strategic partnerships.
+        </p>
+
+        <div class="finance-list">
+          <div class="finance-item">
+            <div class="comp-number">01</div>
+            <div class="finance-title">Private Equity Investors</div>
+            <div class="finance-value">$500,000</div>
+          </div>
+
+          <div class="finance-item">
+            <div class="comp-number">02</div>
+            <div class="finance-title">Seed&amp;Spark Campaign</div>
+            <div class="finance-value">$100,000</div>
+          </div>
+
+          <div class="finance-item">
+            <div class="comp-number">03</div>
+            <div class="finance-title">Executive Producers</div>
+            <div class="finance-value">$150,000</div>
+          </div>
+
+          <div class="finance-item">
+            <div class="comp-number">04</div>
+            <div class="finance-title">Strategic Partnerships</div>
+            <div class="finance-value">$50,000</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="stills" class="stills">
-      <h2>Production Stills</h2>
+    <section id="revenue">
+      <div class="section-wrap">
+        <div class="section-number">04</div>
+        <h2 class="section-title">Revenue Strategy</h2>
+        <p class="section-copy">
+          A multi-window distribution path designed to pursue domestic, international,
+          streaming, and long-tail licensing opportunities.
+        </p>
 
-      <div class="still-grid">
-        <img src="assets/still-faceoff.jpeg" alt="Faceoff">
-        <img src="assets/still-crashcart.jpeg" alt="Crash cart">
-        <img src="assets/still-arm-control.jpeg" alt="Arm control">
-        <img src="assets/still-tony.jpeg" alt="Tony Marciano">
-        <img src="assets/still-hallway.jpeg" alt="Hallway">
+        <div class="revenue-list">
+          <div class="revenue-item">
+            <div class="comp-number">01</div>
+            <div class="revenue-title">Festival Launch</div>
+            <div class="revenue-arrow">→</div>
+          </div>
+
+          <div class="revenue-item">
+            <div class="comp-number">02</div>
+            <div class="revenue-title">Sales Agent</div>
+            <div class="revenue-arrow">→</div>
+          </div>
+
+          <div class="revenue-item">
+            <div class="comp-number">03</div>
+            <div class="revenue-title">Limited Theatrical</div>
+            <div class="revenue-arrow">→</div>
+          </div>
+
+          <div class="revenue-item">
+            <div class="comp-number">04</div>
+            <div class="revenue-title">Streaming License</div>
+            <div class="revenue-arrow">→</div>
+          </div>
+
+          <div class="revenue-item">
+            <div class="comp-number">05</div>
+            <div class="revenue-title">International Sales</div>
+            <div class="revenue-arrow">→</div>
+          </div>
+
+          <div class="revenue-item">
+            <div class="comp-number">06</div>
+            <div class="revenue-title">VOD / TV / Library</div>
+            <div class="revenue-arrow">→</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="development">
-      <div class="section-label logo-glow">Projects in Development</div>
+    <section class="contact-block">
+      <div class="section-wrap">
+        <h2 class="logo-glow">Cold Hallway Films</h2>
+        <p>
+          For qualified producing, financing, distribution, and strategic partnership inquiries.
+        </p>
 
-      <div class="project-list">
-        <a class="project-item" href="#">
-          <div class="project-number">01</div>
-          <div>
-            <h3 class="project-title">Batangas Racer</h3>
-            <p class="project-desc">
-              A father-and-son racing drama about discipline, precision, and legacy.
-            </p>
-          </div>
-          <div class="project-status">In Development</div>
-          <div class="project-arrow">→</div>
+        <a class="btn" href="mailto:aardumas@gmail.com?subject=The%20Technician%20Investor%20Inquiry">
+          Contact
         </a>
 
-        <a class="project-item" href="#">
-          <div class="project-number">02</div>
-          <div>
-            <h3 class="project-title">Darkside</h3>
-            <p class="project-desc">
-              A grounded crime thriller exploring grief, identity, and violence in Los Angeles.
-            </p>
-          </div>
-          <div class="project-status">In Development</div>
-          <div class="project-arrow">→</div>
-        </a>
-
-        <a class="project-item" href="#">
-          <div class="project-number">03</div>
-          <div>
-            <h3 class="project-title">Original Features</h3>
-            <p class="project-desc">
-              Additional Cold Hallway Films projects currently being developed.
-            </p>
-          </div>
-          <div class="project-status">Coming Soon</div>
-          <div class="project-arrow">→</div>
-        </a>
+        <p class="disclaimer">
+          Budget and financing figures are preliminary planning estimates and may change after
+          final screenplay breakdown, scheduling, union review, location bids, insurance quotes,
+          and vendor pricing. Comparable-film theatrical grosses are historical gross receipts,
+          not producer profit, and do not guarantee the financial performance of
+          <em>The Technician</em>. Any investment offering should be made only through formal
+          legal documents prepared by qualified entertainment and securities counsel.
+        </p>
       </div>
-    </section>
-
-    <section class="contact">
-      <h2 class="logo-glow">Cold Hallway Films</h2>
-      <p>Industry inquiries, producers, investors, and collaborators.</p>
-      <a href="mailto:aardumas@gmail.com" class="btn">Contact</a>
     </section>
   </main>
+
   <div class="cursor-dot"></div>
-<div class="cursor-halo"></div>
-<div class="page-fade"></div>
-<button class="sound-toggle">Ambient</button>
+  <div class="cursor-halo"></div>
+  <div class="page-fade"></div>
 
-<script>
-  const dot = document.querySelector(".cursor-dot");
-  const halo = document.querySelector(".cursor-halo");
-  const fade = document.querySelector(".page-fade");
-  const soundBtn = document.querySelector(".sound-toggle");
+  <script>
+    const budget = [
+      { name: "Crew", value: 190000, color: "#f4f6f5" },
+      { name: "Cast", value: 160000, color: "#b9c4c4" },
+      { name: "Camera / Lighting / Grip", value: 90000, color: "#82e1ff" },
+      { name: "Post Production", value: 90000, color: "#6a95a0" },
+      { name: "Stunts & Fight Choreography", value: 80000, color: "#ee5dd5" },
+      { name: "Locations / Permits", value: 45000, color: "#6f547c" },
+      { name: "Contingency", value: 45000, color: "#4e5960" },
+      { name: "Travel", value: 40000, color: "#32535b" },
+      { name: "Production Design / Wardrobe", value: 35000, color: "#21363b" },
+      { name: "Insurance / Legal", value: 25000, color: "#172529" }
+    ];
 
-  document.addEventListener("mousemove", e => {
-    dot.style.left = e.clientX + "px";
-    dot.style.top = e.clientY + "px";
-    halo.style.left = e.clientX + "px";
-    halo.style.top = e.clientY + "px";
-  });
+    const total = budget.reduce((sum, item) => sum + item.value, 0);
+    const svg = document.getElementById("budgetPie");
+    const rows = document.getElementById("budgetRows");
+    const readout = document.getElementById("chartReadout");
+    const ns = "http://www.w3.org/2000/svg";
+    const cx = 110;
+    const cy = 110;
+    const radius = 86;
+    const innerRadius = 53;
+    let startAngle = -90;
+    let lockedIndex = null;
 
-  document.querySelectorAll("a, button, .poster, .project-item").forEach(el => {
-    el.addEventListener("mouseenter", () => halo.classList.add("active"));
-    el.addEventListener("mouseleave", () => halo.classList.remove("active"));
-  });
+    const money = value => `$${value.toLocaleString()}`;
+    const percent = value => `${((value / total) * 100).toFixed(1)}%`;
 
-  document.querySelectorAll("a[href]").forEach(link => {
-    const href = link.getAttribute("href");
+    function point(angle, radiusValue) {
+      const radians = angle * Math.PI / 180;
 
-    if (
-      href &&
-      !href.startsWith("#") &&
-      !href.startsWith("mailto:") &&
-      !href.startsWith("tel:")
-    ) {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        fade.classList.add("active");
-        setTimeout(() => {
-          window.location.href = href;
-        }, 450);
+      return {
+        x: cx + radiusValue * Math.cos(radians),
+        y: cy + radiusValue * Math.sin(radians)
+      };
+    }
+
+    function donutPath(start, end) {
+      const outerStart = point(start, radius);
+      const outerEnd = point(end, radius);
+      const innerEnd = point(end, innerRadius);
+      const innerStart = point(start, innerRadius);
+      const largeArc = end - start > 180 ? 1 : 0;
+
+      return [
+        `M ${outerStart.x} ${outerStart.y}`,
+        `A ${radius} ${radius} 0 ${largeArc} 1 ${outerEnd.x} ${outerEnd.y}`,
+        `L ${innerEnd.x} ${innerEnd.y}`,
+        `A ${innerRadius} ${innerRadius} 0 ${largeArc} 0 ${innerStart.x} ${innerStart.y}`,
+        "Z"
+      ].join(" ");
+    }
+
+    function clearActive() {
+      svg.classList.remove("has-active");
+
+      svg.querySelectorAll("path").forEach(path => {
+        path.classList.remove("is-active");
+      });
+
+      rows.querySelectorAll(".budget-row").forEach(row => {
+        row.classList.remove("is-active");
       });
     }
-  });
 
-  let audioCtx;
-  let hum;
-  let gain;
-  let soundOn = false;
-
-  function startAmbient() {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-
-    hum = audioCtx.createOscillator();
-    gain = audioCtx.createGain();
-
-    hum.type = "sine";
-    hum.frequency.value = 58;
-    gain.gain.value = 0.018;
-
-    hum.connect(gain);
-    gain.connect(audioCtx.destination);
-    hum.start();
-
-    soundOn = true;
-    soundBtn.textContent = "Ambient On";
-    localStorage.setItem("coldhallwaySound", "on");
-  }
-
-  function stopAmbient() {
-    if (audioCtx) {
-      audioCtx.close();
+    function setActive(index) {
+      clearActive();
+      svg.classList.add("has-active");
+      svg.querySelectorAll("path")[index]?.classList.add("is-active");
+      rows.querySelectorAll(".budget-row")[index]?.classList.add("is-active");
     }
 
-    soundOn = false;
-    soundBtn.textContent = "Ambient Off";
-    localStorage.setItem("coldhallwaySound", "off");
-  }
+    function updateReadout(index) {
+      const item = budget[index];
 
-  soundBtn.addEventListener("click", () => {
-    if (!soundOn) {
-      startAmbient();
+      readout.innerHTML = `
+        <strong>${item.name}</strong>
+        <span class="amount">${money(item.value)}</span>
+        <span class="share">${percent(item.value)} of budget</span>
+      `;
+    }
+
+    function resetReadout() {
+      readout.innerHTML = `
+        <strong>Hover over the chart</strong>
+        <span class="amount">$800,000</span>
+        <span class="share">Total proposed budget</span>
+      `;
+    }
+
+    budget.forEach((item, index) => {
+      const sliceAngle = (item.value / total) * 360;
+      const endAngle = startAngle + sliceAngle;
+
+      const path = document.createElementNS(ns, "path");
+      path.setAttribute("d", donutPath(startAngle, endAngle));
+      path.setAttribute("fill", item.color);
+      path.setAttribute("stroke", "#020505");
+      path.setAttribute("stroke-width", "2");
+      path.setAttribute("tabindex", "0");
+      path.setAttribute("role", "button");
+      path.setAttribute(
+        "aria-label",
+        `${item.name}: ${money(item.value)}, ${percent(item.value)} of budget`
+      );
+
+      const title = document.createElementNS(ns, "title");
+      title.textContent = `${item.name}: ${money(item.value)} (${percent(item.value)})`;
+      path.appendChild(title);
+      svg.appendChild(path);
+
+      const row = document.createElement("div");
+      row.className = "budget-row";
+      row.dataset.index = index;
+      row.innerHTML = `
+        <div class="index">${String(index + 1).padStart(2, "0")}</div>
+        <div class="category">${item.name}</div>
+        <div class="value">${money(item.value)}</div>
+        <div class="percent">${percent(item.value)}</div>
+      `;
+      rows.appendChild(row);
+
+      function activate() {
+        if (lockedIndex !== null && lockedIndex !== index) return;
+        setActive(index);
+        updateReadout(index);
+      }
+
+      function deactivate() {
+        if (lockedIndex === null) {
+          clearActive();
+          resetReadout();
+        }
+      }
+
+      path.addEventListener("mouseenter", activate);
+      path.addEventListener("mouseleave", deactivate);
+      path.addEventListener("focus", activate);
+      path.addEventListener("blur", deactivate);
+
+      row.addEventListener("mouseenter", activate);
+      row.addEventListener("mouseleave", deactivate);
+
+      function toggleLock(event) {
+        event.stopPropagation();
+        lockedIndex = lockedIndex === index ? null : index;
+
+        if (lockedIndex === null) {
+          clearActive();
+          resetReadout();
+        } else {
+          setActive(index);
+          updateReadout(index);
+        }
+      }
+
+      path.addEventListener("click", toggleLock);
+      row.addEventListener("click", toggleLock);
+
+      startAngle = endAngle;
+    });
+
+    document.addEventListener("click", () => {
+      lockedIndex = null;
+      clearActive();
+      resetReadout();
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        lockedIndex = null;
+        clearActive();
+        resetReadout();
+      }
+    });
+
+    const dot = document.querySelector(".cursor-dot");
+    const halo = document.querySelector(".cursor-halo");
+    const fade = document.querySelector(".page-fade");
+    const soundBtn = document.querySelector(".sound-toggle");
+
+    document.addEventListener("mousemove", event => {
+      dot.style.left = event.clientX + "px";
+      dot.style.top = event.clientY + "px";
+      halo.style.left = event.clientX + "px";
+      halo.style.top = event.clientY + "px";
+    });
+
+    document
+      .querySelectorAll("a, button, .poster, .budget-row, #budgetPie path, .comparable-item, .finance-item, .revenue-item")
+      .forEach(element => {
+        element.addEventListener("mouseenter", () => {
+          halo.classList.add("active");
+        });
+
+        element.addEventListener("mouseleave", () => {
+          halo.classList.remove("active");
+        });
+      });
+
+    document.querySelectorAll("a[href]").forEach(link => {
+      const href = link.getAttribute("href");
+
+      if (
+        href &&
+        !href.startsWith("#") &&
+        !href.startsWith("mailto:") &&
+        !href.startsWith("tel:")
+      ) {
+        link.addEventListener("click", event => {
+          event.preventDefault();
+          fade.classList.add("active");
+
+          setTimeout(() => {
+            window.location.href = href;
+          }, 450);
+        });
+      }
+    });
+
+    let audioCtx;
+    let hum;
+    let gain;
+    let soundOn = false;
+
+    function startAmbient() {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      hum = audioCtx.createOscillator();
+      gain = audioCtx.createGain();
+
+      hum.type = "sine";
+      hum.frequency.value = 58;
+      gain.gain.value = 0.018;
+
+      hum.connect(gain);
+      gain.connect(audioCtx.destination);
+      hum.start();
+
+      soundOn = true;
+      soundBtn.textContent = "Ambient On";
+      localStorage.setItem("coldhallwaySound", "on");
+    }
+
+    function stopAmbient() {
+      if (audioCtx) {
+        audioCtx.close();
+      }
+
+      soundOn = false;
+      soundBtn.textContent = "Ambient Off";
+      localStorage.setItem("coldhallwaySound", "off");
+    }
+
+    soundBtn.addEventListener("click", () => {
+      if (!soundOn) {
+        startAmbient();
+      } else {
+        stopAmbient();
+      }
+    });
+
+    if (localStorage.getItem("coldhallwaySound") === "on") {
+      soundBtn.textContent = "Ambient";
     } else {
-      stopAmbient();
+      soundBtn.textContent = "Ambient Off";
     }
-  });
-
-  if (localStorage.getItem("coldhallwaySound") === "on") {
-    soundBtn.textContent = "Ambient";
-  } else {
-    soundBtn.textContent = "Ambient Off";
-  }
-</script>
+  </script>
 </body>
 </html>
