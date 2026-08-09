@@ -1814,11 +1814,119 @@
       }
     }
 
+  
+    /* Philosophy principles — “SKILLS SAVE LIVES” treatment */
+    .principle-line,
+    .principle-line span {
+      font-family: "Permanent Marker", "Brush Script MT", cursive !important;
+      text-transform: uppercase !important;
+      letter-spacing: .01em !important;
+      line-height: 1.12 !important;
+    }
+
+    .principle-blue {
+      color: #42E7F2 !important;
+      -webkit-text-fill-color: #42E7F2 !important;
+      font-weight: 400 !important;
+      text-shadow:
+        0 0 7px rgba(66,231,242,.30),
+        0 0 18px rgba(66,231,242,.12) !important;
+    }
+
+    .principle-white {
+      color: #FFFFFF !important;
+      -webkit-text-fill-color: #FFFFFF !important;
+      font-weight: 700 !important;
+      text-shadow:
+        0 0 7px rgba(255,255,255,.16),
+        0 0 16px rgba(255,255,255,.06) !important;
+    }
+
+    .principle-bridge {
+      color: #AEB9BB !important;
+      -webkit-text-fill-color: #AEB9BB !important;
+      font-weight: 400 !important;
+      font-size: .72em !important;
+      opacity: .82;
+    }
+
+    @media (max-width: 700px) {
+      .principle-line {
+        line-height: 1.2 !important;
+      }
+
+      .principle-bridge {
+        font-size: .68em !important;
+      }
+    }
+
+  
+    /* =========================================================
+       PHILOSOPHY MANIFESTO — lowercase brush-script treatment
+       Cyan = core principle
+       White = contrast/payoff
+       Small gray = connector words
+       ========================================================= */
+    #philosophy .principle-line,
+    #philosophy .principle-line span {
+      font-family: "Caveat Brush", "Brush Script MT", cursive !important;
+      text-transform: lowercase !important;
+      letter-spacing: .005em !important;
+      line-height: 1.02 !important;
+    }
+
+    #philosophy .principle-blue {
+      color: #42E7F2 !important;
+      -webkit-text-fill-color: #42E7F2 !important;
+      font-weight: 400 !important;
+      font-size: 1.38em !important;
+      text-shadow:
+        0 0 8px rgba(66,231,242,.38),
+        0 0 22px rgba(66,231,242,.16) !important;
+    }
+
+    #philosophy .principle-white {
+      color: #FFFFFF !important;
+      -webkit-text-fill-color: #FFFFFF !important;
+      font-weight: 400 !important;
+      font-size: 1.38em !important;
+      text-shadow:
+        0 0 7px rgba(255,255,255,.20),
+        0 0 18px rgba(255,255,255,.07) !important;
+    }
+
+    #philosophy .principle-bridge {
+      color: #B8BFC0 !important;
+      -webkit-text-fill-color: #B8BFC0 !important;
+      font-weight: 400 !important;
+      font-size: .72em !important;
+      opacity: .9 !important;
+      text-shadow: none !important;
+    }
+
+    @media (max-width: 700px) {
+      #philosophy .principle-line {
+        line-height: 1.08 !important;
+      }
+
+      #philosophy .principle-blue,
+      #philosophy .principle-white {
+        font-size: 1.22em !important;
+      }
+
+      #philosophy .principle-bridge {
+        font-size: .68em !important;
+      }
+    }
+
   </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
-  </head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap" rel="stylesheet">
+</head>
 
 <body>
   <nav class="topbar">
@@ -2120,11 +2228,11 @@
         <div class="section-number">07 · The Cold Hallway Difference</div>
         <h3 class="logo-glow cold-hallway-title">Cold Hallway Films</h3>
         <div class="philosophy-lines">
-          <div>Authenticity over spectacle.</div>
-          <div>Precision over excess.</div>
-          <div>Character before action.</div>
-          <div>Every frame has intention.</div>
-          <div>Every investment has purpose.</div>
+          <div class="principle-line"><span class="principle-blue">Authenticity</span> <span class="principle-bridge">over</span> <span class="principle-white">spectacle.</span></div>
+          <div class="principle-line"><span class="principle-blue">Precision</span> <span class="principle-bridge">over</span> <span class="principle-white">excess.</span></div>
+          <div class="principle-line"><span class="principle-blue">Character</span> <span class="principle-bridge">before</span> <span class="principle-white">action.</span></div>
+          <div class="principle-line"><span class="principle-bridge">Every</span> <span class="principle-blue">frame</span> <span class="principle-bridge">has</span> <span class="principle-white">intention.</span></div>
+          <div class="principle-line"><span class="principle-bridge">Every</span> <span class="principle-blue">investment</span> <span class="principle-bridge">has</span> <span class="principle-white">purpose.</span></div>
         </div>
       </div>
     </section>
