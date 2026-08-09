@@ -1459,8 +1459,84 @@
       }
     }
 
+  
+    /* =========================================================
+       THE TECHNICIAN — poster-inspired major heading treatment
+       Keeps body copy/card typography unchanged.
+       ========================================================= */
+    :root {
+      --technician-cyan: #42E7F2;
+    }
+
+    .section-title,
+    .opportunity-title,
+    .incentive-heading h3,
+    #brand .brand-hero h2,
+    #founder .founder-name,
+    #investor-value .section-title,
+    #philosophy .section-title,
+    #financing .section-title,
+    #revenue .section-title,
+    #ask .ask-title {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif !important;
+      color: var(--technician-cyan) !important;
+      font-weight: 400 !important;
+      letter-spacing: .025em !important;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 10px rgba(66, 231, 242, .12),
+        0 0 26px rgba(66, 231, 242, .055);
+    }
+
+    /* Preserve the two-tone Opportunity headline:
+       white setup line + Technician cyan payoff line. */
+    .opportunity-title {
+      color: #f4f6f6 !important;
+    }
+
+    .opportunity-title .accent {
+      color: var(--technician-cyan) !important;
+      font-family: inherit !important;
+      text-shadow:
+        0 0 12px rgba(66, 231, 242, .15),
+        0 0 30px rgba(66, 231, 242, .07) !important;
+    }
+
+    /* Keep card headings and paragraphs clean/readable.
+       Only the large cinematic headings receive the poster treatment. */
+    .why-card h3,
+    .brand-card h3,
+    .value-card h3,
+    .founder-credential h3,
+    .incentive-card h4,
+    .finance-item h3,
+    .revenue-item h3 {
+      text-shadow: none;
+    }
+
+    @media (max-width: 700px) {
+      .section-title,
+      .opportunity-title,
+      .incentive-heading h3,
+      #brand .brand-hero h2,
+      #founder .founder-name,
+      #investor-value .section-title,
+      #philosophy .section-title,
+      #financing .section-title,
+      #revenue .section-title,
+      #ask .ask-title {
+        letter-spacing: .018em !important;
+        text-shadow:
+          0 0 8px rgba(66, 231, 242, .10),
+          0 0 18px rgba(66, 231, 242, .04);
+      }
+    }
+
   </style>
-</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  </head>
 
 <body>
   <nav class="topbar">
