@@ -740,7 +740,15 @@
       margin-bottom: 52px;
     }
 
-    .brand-card h3,
+    .brand-card h3 {
+      font-size: clamp(.98rem, 1.45vw, 1.28rem);
+      line-height: 1.12;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      text-wrap: balance;
+    }
+
     .value-card h3 {
       font-size: clamp(1.15rem, 2.2vw, 1.65rem);
       line-height: 1.06;
@@ -847,6 +855,179 @@
       gap: 16px;
       align-items: center;
       flex-wrap: wrap;
+    }
+
+
+    /* Founder section */
+    .founder-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .founder-layout {
+      display: grid;
+      grid-template-columns: minmax(300px, .78fr) minmax(0, 1.22fr);
+      gap: clamp(46px, 7vw, 88px);
+      align-items: center;
+      margin-top: 22px;
+    }
+
+    .founder-photo {
+      position: relative;
+      min-height: 570px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #050808;
+      box-shadow: 0 30px 90px rgba(0,0,0,.45);
+    }
+
+    .founder-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, transparent 64%, rgba(0,0,0,.42) 100%),
+        linear-gradient(90deg, rgba(130,225,255,.045), transparent 36%);
+    }
+
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 570px;
+      display: block;
+      object-fit: cover;
+      object-position: 50% 18%;
+      filter: saturate(.82) contrast(1.04);
+      transition: transform .55s ease, filter .35s ease;
+    }
+
+    .founder-photo:hover img {
+      transform: scale(1.018);
+      filter: saturate(.92) contrast(1.05);
+    }
+
+    .founder-kicker {
+      color: var(--muted-2);
+      font-size: .7rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .founder-name {
+      font-size: clamp(3.2rem, 6.2vw, 6rem);
+      line-height: .92;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .founder-role {
+      color: #bdefff;
+      font-size: .76rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    .founder-copy p {
+      max-width: 680px;
+      color: #bdc7c9;
+      font-size: 1rem;
+      line-height: 1.78;
+      margin-bottom: 20px;
+    }
+
+    .founder-quote {
+      max-width: 720px;
+      margin-top: 32px;
+      padding: 26px 0 26px 26px;
+      border-left: 1px solid rgba(130,225,255,.42);
+      color: #e1eaec;
+      font-size: clamp(1.18rem, 2vw, 1.62rem);
+      line-height: 1.4;
+    }
+
+    .founder-signoff {
+      margin-top: 20px;
+      color: var(--muted-2);
+      font-size: .66rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .founder-credentials {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+      margin-top: 54px;
+    }
+
+    .founder-credential {
+      min-height: 150px;
+      padding: 24px 22px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.014), rgba(0,0,0,.14));
+      transition: transform .25s ease, background .25s ease, border-color .25s ease;
+    }
+
+    .founder-credential:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(180deg, rgba(110,225,255,.045), rgba(0,0,0,.18));
+      border-color: rgba(130,225,255,.26);
+    }
+
+    .founder-credential span {
+      display: block;
+      color: var(--muted-2);
+      font-size: .65rem;
+      letter-spacing: .18em;
+      margin-bottom: 36px;
+    }
+
+    .founder-credential strong {
+      color: #f2f6f7;
+      font-size: .92rem;
+      line-height: 1.25;
+      letter-spacing: .085em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 980px) {
+      .founder-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-photo {
+        max-width: 620px;
+        min-height: 480px;
+      }
+
+      .founder-photo img {
+        min-height: 480px;
+      }
+
+      .founder-credentials {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 620px) {
+      .founder-photo,
+      .founder-photo img {
+        min-height: 410px;
+      }
+
+      .founder-credentials {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-quote {
+        padding-left: 20px;
+      }
     }
 
     @media (max-width: 980px) {
@@ -991,6 +1172,7 @@
 
           <div class="buttons">
             <a class="btn" href="#brand">Investment Thesis</a>
+            <a class="btn" href="#founder">Founder</a>
             <a class="btn" href="#budget">Production Budget</a>
             <a class="btn" href="#comparables">Comparables</a>
             <a class="btn" href="#financing">Financing</a>
@@ -1146,9 +1328,55 @@
       </div>
     </section>
 
+
+    <section id="founder" class="founder-section">
+      <div class="section-wrap">
+        <div class="section-number">04 · Founder</div>
+
+        <div class="founder-layout">
+          <figure class="founder-photo">
+            <img
+              src="assets/aaron-dumas-founder.jpg"
+              alt="Aaron Dumas, founder of Cold Hallway Films"
+            />
+          </figure>
+
+          <div class="founder-copy">
+            <div class="founder-kicker">The person behind the property</div>
+            <h2 class="founder-name">Aaron Dumas</h2>
+            <div class="founder-role">Founder · Writer · Producer</div>
+
+            <p>
+              After years working inside healthcare operations, Aaron saw a world action films rarely explore
+              from the inside. <em>The Technician</em> grew from that perspective: an ordinary working environment
+              transformed into a grounded, high-stakes action arena.
+            </p>
+
+            <p>
+              Cold Hallway Films is being built around original characters, disciplined production,
+              and stories designed with the potential to grow beyond a single feature.
+            </p>
+
+            <div class="founder-quote">
+              “The Technician is the first step toward building Cold Hallway Films into a home for grounded action franchises.”
+            </div>
+
+            <div class="founder-signoff">Aaron Dumas · Cold Hallway Films</div>
+          </div>
+        </div>
+
+        <div class="founder-credentials" aria-label="Founder credentials">
+          <div class="founder-credential"><span>01</span><strong>Writer</strong></div>
+          <div class="founder-credential"><span>02</span><strong>Producer</strong></div>
+          <div class="founder-credential"><span>03</span><strong>Healthcare Professional</strong></div>
+          <div class="founder-credential"><span>04</span><strong>Founder</strong></div>
+        </div>
+      </div>
+    </section>
+
     <section id="investor-value">
       <div class="section-wrap">
-        <div class="section-number">04 · Investor Value</div>
+        <div class="section-number">05 · Investor Value</div>
         <h2 class="section-title">Value Beyond the Screen</h2>
         <p class="section-copy">
           The investment proposition combines financial participation with recognition, strategic access, and a relationship with an emerging original-action brand.
@@ -1165,7 +1393,7 @@
 
     <section id="philosophy">
       <div class="section-wrap philosophy">
-        <div class="section-number">05 · The Cold Hallway Difference</div>
+        <div class="section-number">06 · The Cold Hallway Difference</div>
         <h3 class="logo-glow">Cold Hallway Films</h3>
         <div class="philosophy-lines">
           <div>Authenticity over spectacle.</div>
@@ -1179,7 +1407,7 @@
 
     <section id="financing">
       <div class="section-wrap">
-        <div class="section-number">06</div>
+        <div class="section-number">07</div>
         <h2 class="section-title">Financing Strategy</h2>
         <p class="section-copy">
           A proposed blended capital strategy combining private equity, executive producers,
@@ -1216,7 +1444,7 @@
 
     <section id="revenue">
       <div class="section-wrap">
-        <div class="section-number">07</div>
+        <div class="section-number">08</div>
         <h2 class="section-title">Revenue Strategy</h2>
         <p class="section-copy">
           A multi-window distribution path designed to pursue domestic, international,
@@ -1265,7 +1493,7 @@
 
     <section id="ask" class="contact-block">
       <div class="section-wrap">
-        <div class="section-number">08 · The Ask</div>
+        <div class="section-number">09 · The Ask</div>
         <div class="ask-panel">
           <div>
             <h2 class="ask-amount logo-glow">$800K</h2>
