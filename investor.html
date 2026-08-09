@@ -1413,6 +1413,52 @@
       }
     }
 
+  
+    /* Mobile Investor Value fix: stack cards vertically instead of squeezing 4 columns */
+    @media (max-width: 700px) {
+      #investor-value .value-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        border-left: 1px solid var(--line);
+        border-top: 1px solid var(--line);
+      }
+
+      #investor-value .value-card {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 0 !important;
+        padding: 24px 22px 28px !important;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      #investor-value .value-card .value-index,
+      #investor-value .value-card > span:first-child {
+        display: block;
+        margin-bottom: 24px !important;
+      }
+
+      #investor-value .value-card h3 {
+        max-width: none !important;
+        font-size: 1.12rem !important;
+        line-height: 1.12 !important;
+        letter-spacing: .045em !important;
+        overflow-wrap: normal !important;
+        word-break: normal !important;
+        hyphens: none !important;
+        margin-bottom: 14px !important;
+      }
+
+      #investor-value .value-card p {
+        max-width: 34rem !important;
+        font-size: .96rem !important;
+        line-height: 1.62 !important;
+        overflow-wrap: normal !important;
+        word-break: normal !important;
+      }
+    }
+
   </style>
 </head>
 
