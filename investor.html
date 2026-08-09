@@ -1743,6 +1743,77 @@
       }
     }
 
+  
+    /* Founder credential titles — “SKILLS SAVE LIVES” treatment */
+    #founder .credential h3,
+    #founder .credential-card h3,
+    #founder .founder-credential h3,
+    #founder .founder-credentials h3,
+    #founder .credential-grid h3 {
+      font-family: "Permanent Marker", "Brush Script MT", cursive !important;
+      color: #42E7F2 !important;
+      -webkit-text-fill-color: #42E7F2 !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      letter-spacing: .01em !important;
+      line-height: 1.08 !important;
+      text-shadow:
+        0 0 7px rgba(66,231,242,.28),
+        0 0 18px rgba(66,231,242,.12) !important;
+    }
+
+    #founder .credential:hover h3,
+    #founder .credential-card:hover h3,
+    #founder .founder-credential:hover h3,
+    #founder .credential-grid > *:hover h3 {
+      color: #BDF8FF !important;
+      -webkit-text-fill-color: #BDF8FF !important;
+      text-shadow:
+        0 0 9px rgba(66,231,242,.52),
+        0 0 24px rgba(66,231,242,.24) !important;
+    }
+
+    @media (max-width: 700px) {
+      #founder .credential h3,
+      #founder .credential-card h3,
+      #founder .founder-credential h3,
+      #founder .founder-credentials h3,
+      #founder .credential-grid h3 {
+        font-size: 1.12rem !important;
+        line-height: 1.14 !important;
+      }
+    }
+
+  
+    /* FIX: actual Founder credential labels are STRONG elements */
+    #founder .founder-credentials .founder-credential > strong {
+      font-family: "Permanent Marker", "Brush Script MT", cursive !important;
+      color: #42E7F2 !important;
+      -webkit-text-fill-color: #42E7F2 !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      letter-spacing: .01em !important;
+      line-height: 1.08 !important;
+      text-shadow:
+        0 0 7px rgba(66,231,242,.32),
+        0 0 18px rgba(66,231,242,.14) !important;
+    }
+
+    #founder .founder-credentials .founder-credential:hover > strong {
+      color: #BDF8FF !important;
+      -webkit-text-fill-color: #BDF8FF !important;
+      text-shadow:
+        0 0 9px rgba(66,231,242,.55),
+        0 0 24px rgba(66,231,242,.26) !important;
+    }
+
+    @media (max-width: 700px) {
+      #founder .founder-credentials .founder-credential > strong {
+        font-size: 1.08rem !important;
+        line-height: 1.14 !important;
+      }
+    }
+
   </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
