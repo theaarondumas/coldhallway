@@ -863,6 +863,75 @@
         0 0 28px rgba(66,231,242,.15) !important;
     }
 
+  
+    /* =========================================================
+       SITE-WIDE SECONDARY TITLES — “SKILLS SAVE LIVES” treatment
+       Major section headings remain Anton / Technician block style.
+       Body copy, metrics and labels remain clean sans serif.
+       ========================================================= */
+
+    /* Comparable film titles */
+    #comparables .comp-title,
+
+    /* Financing strategy item titles */
+    #financing .finance-title,
+
+    /* Revenue strategy item titles */
+    #revenue .revenue-title,
+
+    /* Production budget category names */
+    #budget .budget-name {
+      font-family: "Permanent Marker", "Brush Script MT", cursive !important;
+      color: #42E7F2 !important;
+      -webkit-text-fill-color: #42E7F2 !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      letter-spacing: .01em !important;
+      line-height: 1.08 !important;
+      text-shadow:
+        0 0 7px rgba(66,231,242,.28),
+        0 0 18px rgba(66,231,242,.12) !important;
+    }
+
+    #comparables .comp-row:hover .comp-title,
+    #financing .finance-row:hover .finance-title,
+    #revenue .revenue-row:hover .revenue-title,
+    #budget .budget-row:hover .budget-name {
+      color: #BDF8FF !important;
+      -webkit-text-fill-color: #BDF8FF !important;
+      text-shadow:
+        0 0 9px rgba(66,231,242,.52),
+        0 0 24px rgba(66,231,242,.24) !important;
+    }
+
+    /* Preserve strong cinematic scale while using the brush face */
+    #comparables .comp-title {
+      font-size: clamp(2rem, 4vw, 3.2rem) !important;
+    }
+
+    #financing .finance-title,
+    #revenue .revenue-title {
+      font-size: clamp(1.55rem, 3vw, 2.35rem) !important;
+    }
+
+    @media (max-width: 700px) {
+      #comparables .comp-title {
+        font-size: 1.65rem !important;
+        line-height: 1.12 !important;
+      }
+
+      #financing .finance-title,
+      #revenue .revenue-title {
+        font-size: 1.35rem !important;
+        line-height: 1.14 !important;
+      }
+
+      #budget .budget-name {
+        font-size: 1.05rem !important;
+        line-height: 1.15 !important;
+      }
+    }
+
   </style>
 </head>
 
