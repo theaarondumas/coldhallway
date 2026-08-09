@@ -1137,6 +1137,156 @@
         display: none;
       }
     }
+  
+    /* Final polish pass */
+    section,
+    .hero,
+    .founder-layout,
+    .brand-card,
+    .value-card,
+    .comparable-item,
+    .finance-item,
+    .revenue-item,
+    .ask-panel {
+      will-change: transform, opacity;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition:
+        opacity .7s cubic-bezier(.2,.7,.2,1),
+        transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero .poster,
+    .hero .info {
+      opacity: 0;
+      transform: translateY(22px);
+      animation: heroEnter .75s cubic-bezier(.2,.7,.2,1) forwards;
+    }
+
+    .hero .info {
+      animation-delay: .12s;
+    }
+
+    @keyframes heroEnter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .btn.is-active {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 0 1px rgba(255,255,255,.5), 0 0 26px rgba(130,225,255,.14);
+    }
+
+    #budget,
+    #comparables,
+    #brand,
+    #founder,
+    #investor-value,
+    #philosophy,
+    #financing,
+    #revenue,
+    #ask {
+      scroll-margin-top: 92px;
+    }
+
+    .section-copy,
+    .founder-copy p,
+    .thesis-side,
+    .ask-copy {
+      max-width: 68ch;
+    }
+
+    .brand-card,
+    .value-card {
+      padding: 30px 24px;
+    }
+
+    #budgetPie.has-active path:not(.is-active) {
+      opacity: .28;
+      filter: saturate(.45);
+    }
+
+    .budget-row.is-active {
+      transform: translateX(10px);
+      background: linear-gradient(90deg, rgba(110,225,255,.085), transparent);
+      box-shadow: inset 2px 0 0 rgba(130,225,255,.45);
+    }
+
+    .founder-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(130,225,255,.08);
+    }
+
+    .founder-photo img {
+      filter: saturate(.78) contrast(1.06) brightness(.96);
+    }
+
+    .founder-photo:hover img {
+      filter: saturate(.88) contrast(1.07) brightness(.99);
+    }
+
+    .contact-block .founding-cta .btn {
+      border-color: rgba(130,225,255,.72);
+      box-shadow:
+        0 0 0 1px rgba(130,225,255,.10),
+        0 0 24px rgba(130,225,255,.10);
+    }
+
+    .contact-block .founding-cta .btn:hover {
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.45),
+        0 0 34px rgba(130,225,255,.24);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 650px) {
+      .buttons .btn,
+      .founding-cta .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .founder-photo {
+        order: -1;
+      }
+
+      .hero .poster,
+      .hero .info {
+        animation-duration: .55s;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
   </style>
 </head>
 
@@ -1797,6 +1947,56 @@
     } else {
       soundBtn.textContent = "Ambient Off";
     }
+
+    // Final polish: reveal-on-scroll + active section nav
+    const revealTargets = document.querySelectorAll(
+      "section .section-wrap, .comparable-item, .brand-card, .value-card, .founder-layout, .founder-credential, .finance-item, .revenue-item, .ask-panel"
+    );
+
+    revealTargets.forEach((el, index) => {
+      el.classList.add("reveal");
+      el.style.transitionDelay = `${Math.min(index % 6, 5) * 55}ms`;
+    });
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -8% 0px"
+    });
+
+    revealTargets.forEach(el => revealObserver.observe(el));
+
+    const navLinks = [...document.querySelectorAll('.buttons .btn[href^="#"]')];
+    const sectionMap = navLinks
+      .map(link => {
+        const target = document.querySelector(link.getAttribute("href"));
+        return target ? { link, target } : null;
+      })
+      .filter(Boolean);
+
+    const activeObserver = new IntersectionObserver(entries => {
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (!visible) return;
+
+      navLinks.forEach(link => link.classList.remove("is-active"));
+      const match = sectionMap.find(item => item.target === visible.target);
+      if (match) match.link.classList.add("is-active");
+    }, {
+      threshold: [0.25, 0.45, 0.65],
+      rootMargin: "-18% 0px -55% 0px"
+    });
+
+    sectionMap.forEach(item => activeObserver.observe(item.target));
+
   </script>
 </body>
 </html>
