@@ -9,6 +9,9 @@
     content="Investor highlights, production budget, comparable films, financing strategy, and revenue strategy for The Technician."
   />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -769,6 +772,60 @@
         display: none;
       }
     }
+
+    /* THE TECHNICIAN poster-inspired headline treatment */
+    :root { --technician-cyan: #42E7F2; }
+
+    .title,
+    .section-title {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif;
+      color: var(--technician-cyan);
+      font-weight: 400;
+      letter-spacing: .025em;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 10px rgba(66,231,242,.12),
+        0 0 26px rgba(66,231,242,.055);
+    }
+
+    @media (max-width: 650px) {
+      .title,
+      .section-title {
+        letter-spacing: .018em;
+        text-shadow:
+          0 0 8px rgba(66,231,242,.10),
+          0 0 18px rgba(66,231,242,.04);
+      }
+    }
+  
+    /* Production budget categories — “Skills Save Lives” inspired brush treatment */
+    #budget .budget-row .category {
+      font-family: "Permanent Marker", "Brush Script MT", cursive !important;
+      color: #42E7F2 !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      letter-spacing: .015em !important;
+      line-height: 1.08 !important;
+      text-shadow:
+        0 0 7px rgba(66,231,242,.28),
+        0 0 18px rgba(66,231,242,.12);
+    }
+
+    #budget .budget-row:hover .category,
+    #budget .budget-row.is-active .category {
+      color: #bdf8ff !important;
+      text-shadow:
+        0 0 8px rgba(66,231,242,.55),
+        0 0 22px rgba(66,231,242,.28);
+    }
+
+    @media (max-width: 650px) {
+      #budget .budget-row .category {
+        font-size: 1.05rem !important;
+        line-height: 1.15 !important;
+      }
+    }
+
   </style>
 </head>
 
