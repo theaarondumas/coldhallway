@@ -1188,6 +1188,7 @@
       box-shadow: 0 0 0 1px rgba(255,255,255,.5), 0 0 26px rgba(130,225,255,.14);
     }
 
+    #opportunity,
     #budget,
     #comparables,
     #brand,
@@ -1287,6 +1288,50 @@
       }
     }
 
+  
+    /* THE OPPORTUNITY */
+    .opportunity-hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(260px,.85fr);gap:clamp(40px,7vw,84px);align-items:end;margin-top:28px}
+    .opportunity-title{max-width:900px;font-size:clamp(3rem,7.2vw,6.8rem);line-height:.9;letter-spacing:.025em;text-transform:uppercase}
+    .opportunity-title .accent{display:block;color:#dff8ff;text-shadow:0 0 24px rgba(110,225,255,.15);margin-top:12px}
+    .opportunity-lead{max-width:540px;padding-left:26px;border-left:1px solid rgba(130,225,255,.4);color:#c5ced0;font-size:1.05rem;line-height:1.78}
+    .why-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);margin-top:58px}
+    .why-card{min-height:340px;padding:30px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.015),rgba(0,0,0,.16));transition:transform .25s ease,background .25s ease,border-color .25s ease}
+    .why-card:hover{transform:translateY(-5px);background:linear-gradient(180deg,rgba(110,225,255,.055),rgba(0,0,0,.18));border-color:rgba(130,225,255,.28)}
+    .why-index{display:block;color:var(--muted-2);font-size:.68rem;letter-spacing:.18em;margin-bottom:54px}
+    .why-card h3{font-size:clamp(1rem,1.55vw,1.35rem);line-height:1.1;letter-spacing:.05em;text-transform:uppercase;margin-bottom:18px;text-wrap:balance}
+    .why-card p{color:#aebabc;font-size:.91rem;line-height:1.68}
+    .hero-positioning{margin-top:46px;padding:30px 0 30px 28px;border-left:2px solid var(--cyan);font-size:clamp(1.15rem,2.15vw,1.7rem);line-height:1.55;color:#e0e9eb}
+    .hero-positioning strong{color:#fff}
+    .incentive-zone{margin-top:104px;padding-top:72px;border-top:1px solid var(--line)}
+    .incentive-heading{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(260px,.95fr);gap:52px;align-items:end}
+    .incentive-heading h3{font-size:clamp(2.3rem,5.2vw,4.8rem);line-height:.95;letter-spacing:.035em;text-transform:uppercase}
+    .incentive-heading p{max-width:620px;color:#b9c4c6;line-height:1.75;padding-left:24px;border-left:1px solid rgba(130,225,255,.34)}
+    .incentive-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:48px}
+    .incentive-card{position:relative;overflow:hidden;min-height:390px;padding:26px 24px 24px;border:1px solid var(--line);background:radial-gradient(circle at 50% 24%,rgba(130,225,255,.055),transparent 38%),linear-gradient(180deg,rgba(255,255,255,.018),rgba(0,0,0,.2));transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+    .incentive-card::before{content:"";position:absolute;inset:-50% 0 auto;height:70%;background:linear-gradient(180deg,rgba(130,225,255,.12),transparent);opacity:0;transform:translateY(-30%);transition:opacity .35s ease,transform .5s ease;pointer-events:none}
+    .incentive-card:hover{transform:translateY(-7px);border-color:rgba(130,225,255,.4);box-shadow:0 24px 60px rgba(0,0,0,.32),0 0 30px rgba(130,225,255,.065)}
+    .incentive-card:hover::before{opacity:1;transform:translateY(0)}
+    .state-code{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;color:var(--muted-2);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase}
+    .state-code strong{color:#e9f4f6;font-size:.76rem}
+    .incentive-ring{--p:30;position:relative;z-index:2;width:150px;height:150px;margin:34px auto 28px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle closest-side,#040707 73%,transparent 75% 100%),conic-gradient(var(--cyan) calc(var(--p)*1%),rgba(255,255,255,.08) 0);box-shadow:inset 0 0 20px rgba(130,225,255,.035)}
+    .incentive-ring::after{content:"";position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(255,255,255,.04)}
+    .incentive-rate{position:relative;z-index:3;text-align:center;font-size:clamp(2rem,3.4vw,3rem);font-weight:800;letter-spacing:-.02em;line-height:.9}
+    .incentive-rate small{display:block;margin-top:8px;color:var(--muted-2);font-size:.57rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase}
+    .incentive-card h4{position:relative;z-index:2;font-size:1.06rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}
+    .incentive-card p{position:relative;z-index:2;color:#aebabc;font-size:.84rem;line-height:1.58}
+    .incentive-status{position:relative;z-index:2;display:inline-flex;align-items:center;gap:7px;margin-top:18px;padding:7px 10px;border:1px solid rgba(130,225,255,.18);color:#cfeef5;font-size:.59rem;letter-spacing:.12em;text-transform:uppercase}
+    .incentive-status.warning{border-color:rgba(238,93,213,.24);color:#efb8e6}
+    .incentive-source{display:inline-block;margin-top:14px;color:#75898e;font-size:.61rem;letter-spacing:.08em;text-decoration:none;text-transform:uppercase;transition:color .2s ease}
+    .incentive-source:hover{color:var(--cyan)}
+    .capital-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:14px;align-items:center;margin-top:48px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .flow-node{min-height:92px;display:grid;align-content:center;padding:15px 18px;border:1px solid var(--line-soft);background:rgba(255,255,255,.012)}
+    .flow-node span{color:var(--muted-2);font-size:.58rem;letter-spacing:.17em;text-transform:uppercase;margin-bottom:7px}
+    .flow-node strong{font-size:.88rem;line-height:1.3;text-transform:uppercase;letter-spacing:.055em}
+    .flow-arrow{color:var(--cyan);font-size:1.3rem;text-shadow:0 0 14px rgba(130,225,255,.3)}
+    .incentive-note{margin-top:20px;color:#687b80;font-size:.69rem;line-height:1.65}
+    @media(max-width:980px){.opportunity-hero,.incentive-heading{grid-template-columns:1fr}.why-grid,.incentive-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.capital-flow{grid-template-columns:1fr}.flow-arrow{transform:rotate(90deg);justify-self:center}}
+    @media(max-width:620px){.why-grid,.incentive-grid{grid-template-columns:1fr}.why-card{min-height:260px}.incentive-card{min-height:360px}.opportunity-lead,.incentive-heading p{padding-left:18px}}
+
   </style>
 </head>
 
@@ -1321,6 +1366,7 @@
           </p>
 
           <div class="buttons">
+            <a class="btn" href="#opportunity">The Opportunity</a>
             <a class="btn" href="#brand">Investment Thesis</a>
             <a class="btn" href="#founder">Founder</a>
             <a class="btn" href="#budget">Production Budget</a>
@@ -1332,9 +1378,40 @@
       </div>
     </header>
 
+    <section id="opportunity">
+      <div class="section-wrap">
+        <div class="section-number">01 · The Opportunity</div>
+        <div class="opportunity-hero">
+          <h2 class="opportunity-title">Not just another action film.<span class="accent">An original franchise built from a world hiding in plain sight.</span></h2>
+          <p class="opportunity-lead"><em>The Technician</em> transforms one of the world's most recognizable environments into an original action world—grounded in authentic hospital operations, an overlooked everyday hero, and a character designed with long-term franchise potential.</p>
+        </div>
+        <div class="why-grid">
+          <article class="why-card"><span class="why-index">01</span><h3>Why This Film?</h3><p>Hospitals are universally recognizable, yet action cinema has rarely explored the people working behind the scenes who keep them functioning. <em>The Technician</em> turns that familiar environment into fresh genre territory—and uses authenticity as a creative advantage.</p></article>
+          <article class="why-card"><span class="why-index">02</span><h3>Why This Character?</h3><p>Tony Maricano is not law enforcement, military, or a billionaire. He is a hospital supply technician: disciplined, dependable, overlooked, and accustomed to solving problems under pressure. When violence enters his world, he does not become someone new—he reveals who he has always been.</p></article>
+          <article class="why-card"><span class="why-index">03</span><h3>Why Now?</h3><p>The creative thesis is built around grounded action, practical stakes, and an instantly understandable hero. At the same time, the hospital environment offers a recognizable setting with storytelling territory that remains largely unexplored in action franchises.</p></article>
+          <article class="why-card"><span class="why-index">04</span><h3>Why Invest?</h3><p>The goal is not simply to finance one feature. It is to establish original intellectual property that can pursue domestic, international, streaming, television, ancillary, and future franchise opportunities—subject to market performance and final rights structures.</p></article>
+        </div>
+        <div class="hero-positioning"><strong>John Wick</strong> introduced the assassin.<br><strong>The Equalizer</strong> introduced the protector.<br><strong>The Technician</strong> introduces the everyday hero.</div>
+        <div class="incentive-zone" id="incentives">
+          <div class="section-number">Production Incentives</div>
+          <div class="incentive-heading">
+            <h3>Make every production dollar work harder.</h3>
+            <p>Location incentives can reduce a film's effective production cost when qualified expenditures and program requirements are met. These four production markets are being evaluated for their combination of incentive value and production infrastructure.</p>
+          </div>
+          <div class="incentive-grid">
+            <article class="incentive-card"><div class="state-code"><span>Georgia</span><strong>GA</strong></div><div class="incentive-ring" style="--p:30"><div class="incentive-rate">30%<small>Potential credit</small></div></div><h4>20% Base + 10% Uplift</h4><p>Transferable credit. The current $800K plan exceeds Georgia's $500K annual minimum, subject to qualifying Georgia spend, certification, audit, distribution, and promotional-uplift requirements.</p><div class="incentive-status">Budget threshold compatible</div><a class="incentive-source" href="https://georgia.org/industries/film/incentives" target="_blank" rel="noopener">Official program ↗</a></article>
+            <article class="incentive-card"><div class="state-code"><span>New Mexico</span><strong>NM</strong></div><div class="incentive-ring" style="--p:40"><div class="incentive-rate">40%<small>Maximum with uplifts</small></div></div><h4>25% Base · Up to 40%</h4><p>Refundable credit on qualifying New Mexico expenditures, with eligible uplifts. New Mexico Film Office materials state there is no minimum spend requirement for the refundable film tax credit.</p><div class="incentive-status">Strong $800K fit</div><a class="incentive-source" href="https://nmfilm.com/whynewmexico" target="_blank" rel="noopener">Official program ↗</a></article>
+            <article class="incentive-card"><div class="state-code"><span>Louisiana</span><strong>LA</strong></div><div class="incentive-ring" style="--p:40"><div class="incentive-rate">40%<small>Potential maximum</small></div></div><h4>25% Base · Up to 40%</h4><p>Louisiana provides a 25% base credit with qualifying increases. Most eligible productions require more than $300K in Louisiana expenditures, making the threshold potentially compatible with the current production plan.</p><div class="incentive-status">Budget threshold compatible</div><a class="incentive-source" href="https://www.louisianaentertainment.gov/film/motion-picture-production-program" target="_blank" rel="noopener">Official program ↗</a></article>
+            <article class="incentive-card"><div class="state-code"><span>California</span><strong>CA</strong></div><div class="incentive-ring" style="--p:35"><div class="incentive-rate">35%<small>Program 4.0 rate</small></div></div><h4>Premium Ecosystem · Higher Threshold</h4><p>California Program 4.0 offers a 35% credit rate for qualifying productions, but independent feature films require a $1M minimum budget. At the current $800K plan, <em>The Technician</em> would need a higher qualifying budget to pursue this program.</p><div class="incentive-status warning">Current $800K plan below minimum</div><a class="incentive-source" href="https://film.ca.gov/tax-credit/the-basics-4-0/" target="_blank" rel="noopener">Official program ↗</a></article>
+          </div>
+          <div class="capital-flow" aria-label="How production incentives can affect investor capital"><div class="flow-node"><span>01 · Capital</span><strong>$800K Production Plan</strong></div><div class="flow-arrow">→</div><div class="flow-node"><span>02 · Strategy</span><strong>Qualifying In-State Spend</strong></div><div class="flow-arrow">→</div><div class="flow-node"><span>03 · Incentive</span><strong>Potential Credit / Refund</strong></div><div class="flow-arrow">→</div><div class="flow-node"><span>04 · Objective</span><strong>Lower Effective Production Cost</strong></div></div>
+          <p class="incentive-note">Illustrative only. Incentive percentages apply to qualified expenditures—not automatically to the full production budget—and are subject to certification, timing, caps, audits, residency rules, program availability, and other requirements. Final shooting location should be selected with production counsel, a film-incentive CPA, and line-production analysis.</p>
+        </div>
+      </div>
+    </section>
     <section id="budget">
       <div class="section-wrap">
-        <div class="section-number">01</div>
+        <div class="section-number">02</div>
         <h2 class="section-title">Production Budget</h2>
         <p class="section-copy">
           Estimated production budget: <strong>$800,000</strong>. Hover over a pie slice
@@ -1371,7 +1448,7 @@
 
     <section id="comparables">
       <div class="section-wrap">
-        <div class="section-number">02</div>
+        <div class="section-number">03</div>
         <h2 class="section-title">Comparable Films</h2>
         <p class="section-copy">
           Creative and commercial reference points showing established audience demand
@@ -1455,7 +1532,7 @@
 
     <section id="brand">
       <div class="section-wrap">
-        <div class="section-number">03 · Investment Thesis</div>
+        <div class="section-number">04 · Investment Thesis</div>
         <div class="thesis-hero">
           <h2 class="thesis-statement">We don't just make films.<br><span class="accent">We build long-lasting entertainment IP.</span></h2>
           <p class="thesis-side">
@@ -1481,7 +1558,7 @@
 
     <section id="founder" class="founder-section">
       <div class="section-wrap">
-        <div class="section-number">04 · Founder</div>
+        <div class="section-number">05 · Founder</div>
 
         <div class="founder-layout">
           <figure class="founder-photo">
@@ -1526,7 +1603,7 @@
 
     <section id="investor-value">
       <div class="section-wrap">
-        <div class="section-number">05 · Investor Value</div>
+        <div class="section-number">06 · Investor Value</div>
         <h2 class="section-title">Value Beyond the Screen</h2>
         <p class="section-copy">
           The investment proposition combines financial participation with recognition, strategic access, and a relationship with an emerging original-action brand.
@@ -1543,7 +1620,7 @@
 
     <section id="philosophy">
       <div class="section-wrap philosophy">
-        <div class="section-number">06 · The Cold Hallway Difference</div>
+        <div class="section-number">07 · The Cold Hallway Difference</div>
         <h3 class="logo-glow">Cold Hallway Films</h3>
         <div class="philosophy-lines">
           <div>Authenticity over spectacle.</div>
@@ -1557,7 +1634,7 @@
 
     <section id="financing">
       <div class="section-wrap">
-        <div class="section-number">07</div>
+        <div class="section-number">08</div>
         <h2 class="section-title">Financing Strategy</h2>
         <p class="section-copy">
           A proposed blended capital strategy combining private equity, executive producers,
@@ -1594,7 +1671,7 @@
 
     <section id="revenue">
       <div class="section-wrap">
-        <div class="section-number">08</div>
+        <div class="section-number">09</div>
         <h2 class="section-title">Revenue Strategy</h2>
         <p class="section-copy">
           A multi-window distribution path designed to pursue domestic, international,
@@ -1643,7 +1720,7 @@
 
     <section id="ask" class="contact-block">
       <div class="section-wrap">
-        <div class="section-number">09 · The Ask</div>
+        <div class="section-number">10 · The Ask</div>
         <div class="ask-panel">
           <div>
             <h2 class="ask-amount logo-glow">$800K</h2>
@@ -1950,7 +2027,7 @@
 
     // Final polish: reveal-on-scroll + active section nav
     const revealTargets = document.querySelectorAll(
-      "section .section-wrap, .comparable-item, .brand-card, .value-card, .founder-layout, .founder-credential, .finance-item, .revenue-item, .ask-panel"
+      "section .section-wrap, .why-card, .incentive-card, .capital-flow, .comparable-item, .brand-card, .value-card, .founder-layout, .founder-credential, .finance-item, .revenue-item, .ask-panel"
     );
 
     revealTargets.forEach((el, index) => {
