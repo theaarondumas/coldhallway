@@ -1532,10 +1532,137 @@
       }
     }
 
+  
+    /* Production Budget labels — “Skills Save Lives” inspired treatment */
+    #budget .budget-row .category {
+      font-family: "Permanent Marker", "Brush Script MT", cursive !important;
+      color: #42E7F2 !important;
+      font-weight: 400 !important;
+      text-transform: none !important;
+      letter-spacing: .015em !important;
+      line-height: 1.08 !important;
+      text-shadow:
+        0 0 7px rgba(66,231,242,.28),
+        0 0 18px rgba(66,231,242,.12);
+    }
+
+    #budget .budget-row:hover .category,
+    #budget .budget-row.is-active .category {
+      color: #bdf8ff !important;
+      text-shadow:
+        0 0 8px rgba(66,231,242,.55),
+        0 0 22px rgba(66,231,242,.28);
+    }
+
+    @media (max-width: 650px) {
+      #budget .budget-row .category {
+        font-size: 1.05rem !important;
+        line-height: 1.15 !important;
+      }
+    }
+
+  
+    /* Additional Technician poster treatment:
+       Hero "Investor Highlights" + large bottom "Cold Hallway Films" heading */
+    .hero .title,
+    .hero h1.title,
+    #philosophy .philosophy-wordmark,
+    #philosophy .cold-hallway-title,
+    #philosophy h2,
+    #philosophy h3.big-heading {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif !important;
+      color: #42E7F2 !important;
+      font-weight: 400 !important;
+      letter-spacing: .025em !important;
+      text-transform: uppercase !important;
+      text-shadow:
+        0 0 10px rgba(66,231,242,.15),
+        0 0 28px rgba(66,231,242,.07);
+    }
+
+    @media (max-width: 700px) {
+      .hero .title,
+      .hero h1.title,
+      #philosophy .philosophy-wordmark,
+      #philosophy .cold-hallway-title,
+      #philosophy h2,
+      #philosophy h3.big-heading {
+        letter-spacing: .018em !important;
+        text-shadow:
+          0 0 8px rgba(66,231,242,.12),
+          0 0 20px rgba(66,231,242,.05);
+      }
+    }
+
+  
+    .cold-hallway-title {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif !important;
+      color: #42E7F2 !important;
+      font-weight: 400 !important;
+      letter-spacing: .025em !important;
+      text-transform: uppercase !important;
+      text-shadow: 0 0 10px rgba(66,231,242,.15), 0 0 28px rgba(66,231,242,.07);
+    }
+
+  
+    /* $800K budget figure — THE TECHNICIAN poster theme */
+    #budget .donut-center strong,
+    #budget .donut-center .amount,
+    #budget .budget-total,
+    #budget .total-budget {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif !important;
+      color: #42E7F2 !important;
+      font-weight: 400 !important;
+      letter-spacing: .025em !important;
+      text-shadow:
+        0 0 10px rgba(66,231,242,.18),
+        0 0 28px rgba(66,231,242,.08);
+    }
+
+  
+    #budget .budget-total {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif !important;
+      color: #42E7F2 !important;
+      font-weight: 400 !important;
+      letter-spacing: .025em !important;
+      text-shadow: 0 0 10px rgba(66,231,242,.18), 0 0 28px rgba(66,231,242,.08);
+    }
+
+  
+    /* THE ASK — $800K in THE TECHNICIAN poster theme */
+    section#ask h2.ask-amount {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif !important;
+      color: #42E7F2 !important;
+      -webkit-text-fill-color: #42E7F2 !important;
+      font-weight: 400 !important;
+      letter-spacing: .025em !important;
+      text-transform: uppercase !important;
+      text-shadow:
+        0 0 10px rgba(66,231,242,.45),
+        0 0 28px rgba(66,231,242,.20) !important;
+    }
+
+  
+    /* Investment Thesis statement — Technician poster treatment */
+    #brand .brand-hero h2 .accent,
+    #brand .brand-hero h2 span,
+    #brand .thesis-statement .accent,
+    #brand .thesis-statement span {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif !important;
+      color: #42E7F2 !important;
+      -webkit-text-fill-color: #42E7F2 !important;
+      font-weight: 400 !important;
+      letter-spacing: .025em !important;
+      text-transform: uppercase !important;
+      text-shadow:
+        0 0 10px rgba(66,231,242,.28),
+        0 0 28px rgba(66,231,242,.12) !important;
+    }
+
   </style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Permanent+Marker&display=swap" rel="stylesheet">
   </head>
 
 <body>
@@ -1644,7 +1771,7 @@
               ></svg>
 
               <div class="chart-center">
-                <strong>$800K</strong>
+                <strong class="budget-total" style="color:#42E7F2 !important;-webkit-text-fill-color:#42E7F2 !important;font-family:Anton,Impact,Arial Narrow,sans-serif !important;font-weight:400;text-shadow:0 0 10px rgba(66,231,242,.45),0 0 28px rgba(66,231,242,.20);">$800K</strong>
                 <span>Total Budget</span>
               </div>
             </div>
@@ -1836,7 +1963,7 @@
     <section id="philosophy">
       <div class="section-wrap philosophy">
         <div class="section-number">07 · The Cold Hallway Difference</div>
-        <h3 class="logo-glow">Cold Hallway Films</h3>
+        <h3 class="logo-glow cold-hallway-title">Cold Hallway Films</h3>
         <div class="philosophy-lines">
           <div>Authenticity over spectacle.</div>
           <div>Precision over excess.</div>
@@ -1938,7 +2065,7 @@
         <div class="section-number">10 · The Ask</div>
         <div class="ask-panel">
           <div>
-            <h2 class="ask-amount logo-glow">$800K</h2>
+            <h2 class="ask-amount" style="color:#42E7F2 !important;-webkit-text-fill-color:#42E7F2 !important;font-family:Anton,Impact,Arial Narrow,sans-serif !important;font-weight:400;text-shadow:0 0 10px rgba(66,231,242,.45),0 0 28px rgba(66,231,242,.20);">$800K</h2>
             <p class="ask-copy">
               Seeking strategic investors and founding partners who believe in original action IP, disciplined production, and long-term franchise potential.
             </p>
