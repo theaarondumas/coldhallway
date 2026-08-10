@@ -1935,7 +1935,7 @@
 
       <div class="top-actions">
         <a class="back-btn" href="the-technician.html">Back</a>
-        <button class="sound-toggle" type="button">Ambient Off</button>
+        <button class="sound-toggle" type="button">Synth Off</button>
       </div>
     </div>
   </nav>
@@ -2358,6 +2358,11 @@
     </section>
   </main>
 
+
+  <audio id="synthTrack" loop preload="metadata">
+    <source src="assets/coldhallway-synth.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="cursor-dot"></div>
   <div class="cursor-halo"></div>
   <div class="page-fade"></div>
@@ -2583,50 +2588,54 @@
       }
     });
 
-    let audioCtx;
-    let hum;
-    let gain;
+    const synthTrack = document.getElementById("synthTrack");
+    synthTrack.volume = 0.16;
+
     let soundOn = false;
 
-    function startAmbient() {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      hum = audioCtx.createOscillator();
-      gain = audioCtx.createGain();
-
-      hum.type = "sine";
-      hum.frequency.value = 58;
-      gain.gain.value = 0.018;
-
-      hum.connect(gain);
-      gain.connect(audioCtx.destination);
-      hum.start();
-
-      soundOn = true;
-      soundBtn.textContent = "Ambient On";
-      localStorage.setItem("coldhallwaySound", "on");
+    async function startSynth() {
+      try {
+        await synthTrack.play();
+        soundOn = true;
+        soundBtn.textContent = "Synth On";
+        localStorage.setItem("coldhallwaySound", "on");
+      } catch (error) {
+        soundBtn.textContent = "Tap For Synth";
+      }
     }
 
-    function stopAmbient() {
-      if (audioCtx) {
-        audioCtx.close();
-      }
-
+    function stopSynth() {
+      synthTrack.pause();
       soundOn = false;
-      soundBtn.textContent = "Ambient Off";
+      soundBtn.textContent = "Synth Off";
       localStorage.setItem("coldhallwaySound", "off");
     }
 
     soundBtn.addEventListener("click", () => {
-      if (!soundOn) {
-        startAmbient();
+      if (soundOn) {
+        stopSynth();
       } else {
-        stopAmbient();
+        startSynth();
       }
     });
 
+    // Browsers block unsolicited autoplay. We remember the preference,
+    // then resume on the user's next interaction.
     if (localStorage.getItem("coldhallwaySound") === "on") {
-      soundBtn.textContent = "Ambient";
+      soundBtn.textContent = "Tap For Synth";
+
+      const resumeSynth = () => {
+        startSynth();
+        document.removeEventListener("pointerdown", resumeSynth);
+        document.removeEventListener("keydown", resumeSynth);
+      };
+
+      document.addEventListener("pointerdown", resumeSynth, { once: true });
+      document.addEventListener("keydown", resumeSynth, { once: true });
     } else {
+      soundBtn.textContent = "Synth Off";
+    }
+ else {
       soundBtn.textContent = "Ambient Off";
     }
 
