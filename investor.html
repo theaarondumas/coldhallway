@@ -2359,7 +2359,7 @@
   </main>
 
 
-  <audio id="synthTrack" loop preload="metadata">
+  <audio id="synthTrack" loop preload="auto">
     <source src="assets/coldhallway-synth.mp3" type="audio/mpeg">
   </audio>
 
@@ -2589,54 +2589,68 @@
     });
 
     const synthTrack = document.getElementById("synthTrack");
-    synthTrack.volume = 0.16;
+    synthTrack.volume = 0.18;
 
     let soundOn = false;
+
+    function updateSynthButton() {
+      soundBtn.textContent = soundOn ? "Synth On" : "Synth Off";
+      soundBtn.setAttribute("aria-pressed", soundOn ? "true" : "false");
+    }
 
     async function startSynth() {
       try {
         await synthTrack.play();
         soundOn = true;
-        soundBtn.textContent = "Synth On";
         localStorage.setItem("coldhallwaySound", "on");
+        updateSynthButton();
       } catch (error) {
+        soundOn = false;
         soundBtn.textContent = "Tap For Synth";
+        console.warn("Synth playback was blocked or the audio file could not load:", error);
       }
     }
 
     function stopSynth() {
       synthTrack.pause();
       soundOn = false;
-      soundBtn.textContent = "Synth Off";
       localStorage.setItem("coldhallwaySound", "off");
+      updateSynthButton();
     }
 
-    soundBtn.addEventListener("click", () => {
-      if (soundOn) {
+    soundBtn.addEventListener("click", async () => {
+      if (soundOn && !synthTrack.paused) {
         stopSynth();
       } else {
-        startSynth();
+        await startSynth();
       }
     });
 
-    // Browsers block unsolicited autoplay. We remember the preference,
-    // then resume on the user's next interaction.
+    synthTrack.addEventListener("playing", () => {
+      soundOn = true;
+      updateSynthButton();
+    });
+
+    synthTrack.addEventListener("pause", () => {
+      if (!synthTrack.ended) {
+        soundOn = false;
+        updateSynthButton();
+      }
+    });
+
+    synthTrack.addEventListener("error", () => {
+      soundOn = false;
+      soundBtn.textContent = "Audio Missing";
+      console.error(
+        "Could not load assets/coldhallway-synth.mp3. Confirm that exact file exists in the GitHub assets folder."
+      );
+    });
+
+    // We remember the preference, but browsers still require a gesture before playback.
     if (localStorage.getItem("coldhallwaySound") === "on") {
       soundBtn.textContent = "Tap For Synth";
-
-      const resumeSynth = () => {
-        startSynth();
-        document.removeEventListener("pointerdown", resumeSynth);
-        document.removeEventListener("keydown", resumeSynth);
-      };
-
-      document.addEventListener("pointerdown", resumeSynth, { once: true });
-      document.addEventListener("keydown", resumeSynth, { once: true });
     } else {
-      soundBtn.textContent = "Synth Off";
-    }
- else {
-      soundBtn.textContent = "Ambient Off";
+      updateSynthButton();
     }
 
     // Final polish: reveal-on-scroll + active section nav
