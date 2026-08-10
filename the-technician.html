@@ -942,7 +942,7 @@
 
       <div class="top-actions">
         <a class="back-btn" href="the-technician.html">Back</a>
-        <button class="sound-toggle" type="button">Ambient Off</button>
+        <button class="sound-toggle" type="button">Synth Off</button>
       </div>
     </div>
   </nav>
@@ -1207,6 +1207,11 @@
     </section>
   </main>
 
+
+  <audio id="synthTrack" loop preload="auto">
+    <source src="assets/coldhallway-synth.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="cursor-dot"></div>
   <div class="cursor-halo"></div>
   <div class="page-fade"></div>
@@ -1431,53 +1436,74 @@
         });
       }
     });
+  
+    const soundBtn = document.querySelector(".sound-toggle");
+    const synthTrack = document.getElementById("synthTrack");
 
-    let audioCtx;
-    let hum;
-    let gain;
-    let soundOn = false;
+    if (soundBtn && synthTrack) {
+      synthTrack.volume = 0.18;
+      let soundOn = false;
 
-    function startAmbient() {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      hum = audioCtx.createOscillator();
-      gain = audioCtx.createGain();
-
-      hum.type = "sine";
-      hum.frequency.value = 58;
-      gain.gain.value = 0.018;
-
-      hum.connect(gain);
-      gain.connect(audioCtx.destination);
-      hum.start();
-
-      soundOn = true;
-      soundBtn.textContent = "Ambient On";
-      localStorage.setItem("coldhallwaySound", "on");
-    }
-
-    function stopAmbient() {
-      if (audioCtx) {
-        audioCtx.close();
+      function updateSynthButton() {
+        soundBtn.textContent = soundOn ? "Synth On" : "Synth Off";
+        soundBtn.setAttribute("aria-pressed", soundOn ? "true" : "false");
       }
 
-      soundOn = false;
-      soundBtn.textContent = "Ambient Off";
-      localStorage.setItem("coldhallwaySound", "off");
-    }
+      async function startSynth() {
+        try {
+          await synthTrack.play();
+          soundOn = true;
+          localStorage.setItem("coldhallwaySound", "on");
+          updateSynthButton();
+        } catch (error) {
+          soundOn = false;
+          soundBtn.textContent = "Tap For Synth";
+          console.warn("Synth playback was blocked or the audio file could not load:", error);
+        }
+      }
 
-    soundBtn.addEventListener("click", () => {
-      if (!soundOn) {
-        startAmbient();
+      function stopSynth() {
+        synthTrack.pause();
+        soundOn = false;
+        localStorage.setItem("coldhallwaySound", "off");
+        updateSynthButton();
+      }
+
+      soundBtn.addEventListener("click", async () => {
+        if (soundOn && !synthTrack.paused) {
+          stopSynth();
+        } else {
+          await startSynth();
+        }
+      });
+
+      synthTrack.addEventListener("playing", () => {
+        soundOn = true;
+        updateSynthButton();
+      });
+
+      synthTrack.addEventListener("pause", () => {
+        if (!synthTrack.ended) {
+          soundOn = false;
+          updateSynthButton();
+        }
+      });
+
+      synthTrack.addEventListener("error", () => {
+        soundOn = false;
+        soundBtn.textContent = "Audio Missing";
+        console.error(
+          "Could not load assets/coldhallway-synth.mp3. Confirm that exact file exists in the GitHub assets folder."
+        );
+      });
+
+      if (localStorage.getItem("coldhallwaySound") === "on") {
+        soundBtn.textContent = "Tap For Synth";
       } else {
-        stopAmbient();
+        updateSynthButton();
       }
-    });
-
-    if (localStorage.getItem("coldhallwaySound") === "on") {
-      soundBtn.textContent = "Ambient";
-    } else {
-      soundBtn.textContent = "Ambient Off";
     }
-  </script>
+
+</script>
 </body>
 </html>
