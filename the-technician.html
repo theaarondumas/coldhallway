@@ -932,6 +932,349 @@
       }
     }
 
+  
+    /* =========================================================
+       AUDIENCE MISSION POPUP
+       ========================================================= */
+    .mission-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 160;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+    }
+
+    .mission-modal.is-open {
+      display: flex;
+    }
+
+    .mission-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.76);
+      backdrop-filter: blur(9px);
+      -webkit-backdrop-filter: blur(9px);
+    }
+
+    .mission-modal-panel {
+      position: relative;
+      z-index: 1;
+      width: min(920px, 100%);
+      max-height: min(92vh, 860px);
+      overflow-y: auto;
+      padding: clamp(26px, 4vw, 42px);
+      border: 1px solid rgba(66,231,242,.22);
+      background:
+        radial-gradient(circle at 82% 20%, rgba(66,231,242,.09), transparent 31%),
+        linear-gradient(180deg, rgba(9,15,16,.98), rgba(0,0,0,.98));
+      box-shadow:
+        0 28px 90px rgba(0,0,0,.62),
+        0 0 55px rgba(66,231,242,.05);
+    }
+
+    .mission-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line-soft);
+      background: rgba(255,255,255,.02);
+      color: #cbd7d9;
+      font-size: 1.55rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .mission-modal-close:hover {
+      color: #fff;
+      border-color: rgba(66,231,242,.42);
+      background: rgba(66,231,242,.08);
+    }
+
+    .mission-modal-kicker {
+      color: var(--muted-2);
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .mission-modal-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(66,231,242,.28);
+      color: #bcc9cc;
+      font-size: .67rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .mission-modal-status span {
+      color: #dffcff;
+      text-shadow: 0 0 10px rgba(66,231,242,.18);
+    }
+
+    .mission-modal-title {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif;
+      color: #42E7F2;
+      font-size: clamp(2.6rem, 6vw, 5.5rem);
+      font-weight: 400;
+      line-height: .92;
+      letter-spacing: .028em;
+      text-transform: uppercase;
+      text-shadow:
+        0 0 10px rgba(66,231,242,.16),
+        0 0 26px rgba(66,231,242,.07);
+      margin-bottom: 16px;
+    }
+
+    .mission-modal-copy {
+      max-width: 68ch;
+      color: #c0cbcd;
+      line-height: 1.78;
+      margin-bottom: 24px;
+    }
+
+    .mission-modal-count {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .mission-modal-count strong {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif;
+      color: #42E7F2;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 400;
+      line-height: .92;
+      letter-spacing: .03em;
+      text-shadow:
+        0 0 10px rgba(66,231,242,.18),
+        0 0 28px rgba(66,231,242,.08);
+    }
+
+    .mission-modal-count span {
+      color: #edf3f4;
+      font-size: clamp(1rem, 1.8vw, 1.18rem);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    /* Protein-bar-shaped progress meter */
+    .protein-progress-wrap {
+      margin: 8px 0 26px;
+      padding-top: 8px;
+    }
+
+    .protein-progress {
+      position: relative;
+      width: min(100%, 760px);
+      height: 128px;
+      overflow: visible;
+    }
+
+    .protein-progress::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,.08);
+      -webkit-mask: url("assets/technician-protein-bar-shape.png") center / contain no-repeat;
+      mask: url("assets/technician-protein-bar-shape.png") center / contain no-repeat;
+      filter: drop-shadow(0 0 12px rgba(255,255,255,.06));
+    }
+
+    .protein-progress-fill {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0;
+      overflow: hidden;
+      transition: width .7s ease;
+    }
+
+    .protein-progress-fill::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 760px;
+      max-width: 100%;
+      min-width: 100%;
+      background: linear-gradient(90deg, #42E7F2 0%, #72F0FF 55%, #A8F7FF 100%);
+      -webkit-mask: url("assets/technician-protein-bar-shape.png") center / contain no-repeat;
+      mask: url("assets/technician-protein-bar-shape.png") center / contain no-repeat;
+      filter: drop-shadow(0 0 18px rgba(66,231,242,.30));
+    }
+
+    .protein-progress-label {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif;
+      color: #071113;
+      font-size: clamp(1rem, 2.3vw, 1.55rem);
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    .mission-modal-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .mission-modal-meta div {
+      padding: 15px 14px 14px;
+      border: 1px solid var(--line-soft);
+      background: rgba(255,255,255,.012);
+    }
+
+    .mission-modal-meta small {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted-2);
+      font-size: .62rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .mission-modal-meta strong {
+      color: #edf5f6;
+      font-size: .86rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .mission-signup,
+    .mission-confirmation {
+      margin-top: 22px;
+      padding: 20px;
+      border: 1px solid rgba(66,231,242,.18);
+      background: rgba(66,231,242,.025);
+    }
+
+    .mission-signup-heading,
+    .mission-confirmation-title {
+      font-family: "Anton", Impact, "Arial Narrow", sans-serif;
+      color: #42E7F2;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: .025em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .mission-signup-copy,
+    .mission-confirmation p {
+      color: #b9c4c6;
+      line-height: 1.65;
+      margin-bottom: 16px;
+    }
+
+    .mission-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .mission-signup label {
+      display: block;
+    }
+
+    .mission-signup label > span {
+      display: block;
+      margin-bottom: 7px;
+      color: #97a6a9;
+      font-size: .63rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .mission-signup input,
+    .mission-signup select {
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 13px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 0;
+      outline: none;
+      background: #080b0c;
+      color: #eef7f8;
+      font: inherit;
+    }
+
+    .mission-signup input:focus,
+    .mission-signup select:focus {
+      border-color: rgba(66,231,242,.55);
+      box-shadow: 0 0 0 2px rgba(66,231,242,.08);
+    }
+
+    .mission-interest {
+      margin-top: 12px;
+    }
+
+    .mission-form-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .mission-form-status {
+      color: #9bb0b3;
+      font-size: .8rem;
+    }
+
+    .mission-confirmation-kicker {
+      color: #9fb1b4;
+      font-size: .65rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .mission-modal-actions {
+      margin-top: 20px;
+    }
+
+    body.mission-modal-open {
+      overflow: hidden;
+    }
+
+    @media (max-width: 720px) {
+      .mission-modal {
+        padding: 12px;
+      }
+
+      .mission-modal-panel {
+        padding: 24px 18px 20px;
+      }
+
+      .protein-progress {
+        height: 96px;
+      }
+
+      .protein-progress-label {
+        font-size: .9rem;
+      }
+
+      .mission-modal-meta,
+      .mission-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -946,6 +1289,106 @@
       </div>
     </div>
   </nav>
+
+  
+  <div class="mission-modal is-open" id="missionModal" aria-hidden="false">
+    <div class="mission-modal-backdrop" data-close-mission></div>
+
+    <div class="mission-modal-panel" role="dialog" aria-modal="true" aria-labelledby="missionModalTitle">
+      <button class="mission-modal-close" type="button" aria-label="Close audience mission" data-close-mission>
+        ×
+      </button>
+
+      <div class="mission-modal-kicker">Audience Mission</div>
+      <div class="mission-modal-status">Status: <span>Active</span></div>
+
+      <h2 class="mission-modal-title" id="missionModalTitle">Prove the audience.</h2>
+
+      <p class="mission-modal-copy">
+        We are building an early supporter base for <em>The Technician</em> before launching
+        a larger public campaign. Join the mission and help prove there is an audience waiting for this film.
+      </p>
+
+      <div class="mission-modal-count">
+        <strong id="supporterCount">0</strong>
+        <span>/ 1,000 supporters</span>
+      </div>
+
+      <div
+        class="protein-progress-wrap"
+        aria-label="Audience mission progress: 0 out of 1,000 supporters"
+      >
+        <div class="protein-progress">
+          <div class="protein-progress-fill" id="supporterProgressFill" style="width:0%"></div>
+          <div class="protein-progress-label" id="supporterProgressLabel">0% mission complete</div>
+        </div>
+      </div>
+
+      <div class="mission-modal-meta">
+        <div>
+          <small>Target</small>
+          <strong>1,000 supporters</strong>
+        </div>
+        <div>
+          <small>Phase</small>
+          <strong>Audience build</strong>
+        </div>
+        <div>
+          <small>Next</small>
+          <strong>Crowdfunding launch</strong>
+        </div>
+      </div>
+
+      <div class="mission-signup" id="missionSignup" hidden>
+        <div class="mission-signup-heading">Join the mission</div>
+        <p class="mission-signup-copy">
+          Get early updates and help us prove there is an audience for <em>The Technician</em>.
+        </p>
+
+        <form id="missionSignupForm">
+          <div class="mission-form-grid">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" required placeholder="Your name">
+            </label>
+
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required placeholder="you@email.com">
+            </label>
+          </div>
+
+          <label class="mission-interest">
+            <span>I’m interested in</span>
+            <select name="interest" required>
+              <option value="I want to see the film">I want to see the film</option>
+              <option value="I'd support the campaign">I'd support the campaign</option>
+              <option value="Investor / industry updates">Investor / industry updates</option>
+            </select>
+          </label>
+
+          <div class="mission-form-actions">
+            <button class="btn" type="submit" id="missionSubmitBtn">Confirm Mission</button>
+            <span class="mission-form-status" id="missionFormStatus" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
+
+      <div class="mission-confirmation" id="missionConfirmation" hidden>
+        <div class="mission-confirmation-kicker">Mission status: confirmed</div>
+        <div class="mission-confirmation-title">You’re in.</div>
+        <p>
+          You’ve joined the early audience for <em>The Technician</em>.
+          We’ll keep you updated as the mission moves forward.
+        </p>
+      </div>
+
+      <div class="buttons mission-modal-actions">
+        <button class="btn" type="button" id="openMissionSignup">Join The Mission</button>
+        <button class="btn" type="button" data-close-mission>Enter Site</button>
+      </div>
+    </div>
+  </div>
 
   <main>
     <header class="hero">
@@ -966,6 +1409,7 @@
           </p>
 
           <div class="buttons">
+  <a class="btn" href="#" data-open-mission>Audience Mission</a>
   <a class="btn" href="investor.html#brand">Investment Thesis</a>
   <a class="btn" href="#budget">Production Budget</a>
   <a class="btn" href="#comparables">Comparables</a>
@@ -1502,6 +1946,154 @@
         updateSynthButton();
       }
     }
+
+
+    /* =========================================================
+       Audience Mission + Google Sheets
+       ========================================================= */
+    const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwXmIZw1bxL05hx4JkjrsBzt01PR_CI9CNwP54Sf3pRrIIHho_yEGQcSpQ4SjaQ9nOf/exec";
+    const MISSION_TARGET = 1000;
+
+    const missionModal = document.getElementById("missionModal");
+    const missionOpeners = document.querySelectorAll("[data-open-mission]");
+    const missionClosers = document.querySelectorAll("[data-close-mission]");
+
+    const supporterCountEl = document.getElementById("supporterCount");
+    const supporterProgressFill = document.getElementById("supporterProgressFill");
+    const supporterProgressLabel = document.getElementById("supporterProgressLabel");
+    const proteinProgressWrap = document.querySelector(".protein-progress-wrap");
+
+    const openMissionSignup = document.getElementById("openMissionSignup");
+    const missionSignup = document.getElementById("missionSignup");
+    const missionSignupForm = document.getElementById("missionSignupForm");
+    const missionSubmitBtn = document.getElementById("missionSubmitBtn");
+    const missionFormStatus = document.getElementById("missionFormStatus");
+    const missionConfirmation = document.getElementById("missionConfirmation");
+
+    function openMissionModal() {
+      if (!missionModal) return;
+      missionModal.classList.add("is-open");
+      missionModal.setAttribute("aria-hidden", "false");
+      document.body.classList.add("mission-modal-open");
+    }
+
+    function closeMissionModal() {
+      if (!missionModal) return;
+      missionModal.classList.remove("is-open");
+      missionModal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("mission-modal-open");
+    }
+
+    missionOpeners.forEach(link => {
+      link.addEventListener("click", event => {
+        event.preventDefault();
+        openMissionModal();
+      });
+    });
+
+    missionClosers.forEach(el => {
+      el.addEventListener("click", closeMissionModal);
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeMissionModal();
+    });
+
+    function renderSupporterCount(count) {
+      const safeCount = Math.max(0, Number(count) || 0);
+      const pct = Math.min(100, (safeCount / MISSION_TARGET) * 100);
+
+      if (supporterCountEl) supporterCountEl.textContent = safeCount.toLocaleString();
+      if (supporterProgressFill) supporterProgressFill.style.width = `${pct}%`;
+      if (supporterProgressLabel) supporterProgressLabel.textContent = `${pct.toFixed(1)}% mission complete`;
+
+      if (proteinProgressWrap) {
+        proteinProgressWrap.setAttribute(
+          "aria-label",
+          `Audience mission progress: ${safeCount} out of ${MISSION_TARGET} supporters`
+        );
+      }
+    }
+
+    function loadLiveSupporterCount() {
+      const callbackName = `missionCount_${Date.now()}`;
+
+      window[callbackName] = function(payload) {
+        try {
+          renderSupporterCount(payload && typeof payload.count !== "undefined" ? payload.count : 0);
+        } finally {
+          delete window[callbackName];
+          const oldScript = document.getElementById(callbackName);
+          if (oldScript) oldScript.remove();
+        }
+      };
+
+      const script = document.createElement("script");
+      script.id = callbackName;
+      script.src =
+        `${GOOGLE_APPS_SCRIPT_URL}?action=count&callback=${encodeURIComponent(callbackName)}&_=${Date.now()}`;
+
+      script.onerror = () => {
+        console.warn("Could not load the live Audience Mission count.");
+        delete window[callbackName];
+        script.remove();
+      };
+
+      document.body.appendChild(script);
+    }
+
+    if (openMissionSignup && missionSignup) {
+      openMissionSignup.addEventListener("click", () => {
+        missionSignup.hidden = false;
+        openMissionSignup.style.display = "none";
+        const firstInput = missionSignup.querySelector("input");
+        if (firstInput) setTimeout(() => firstInput.focus(), 60);
+      });
+    }
+
+    if (missionSignupForm) {
+      missionSignupForm.addEventListener("submit", async event => {
+        event.preventDefault();
+
+        const formData = new FormData(missionSignupForm);
+        formData.append("source", "The Technician Audience Mission");
+        formData.append("page", window.location.href);
+        formData.append("referrer", document.referrer || "Direct");
+
+        missionSubmitBtn.disabled = true;
+        missionSubmitBtn.textContent = "Confirming...";
+        missionFormStatus.textContent = "Submitting mission request...";
+
+        try {
+          await fetch(GOOGLE_APPS_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: formData
+          });
+
+          missionSignup.hidden = true;
+          missionConfirmation.hidden = false;
+          missionFormStatus.textContent = "";
+          missionSignupForm.reset();
+
+          // Give Apps Script a moment to write the row, then refresh the live count.
+          setTimeout(loadLiveSupporterCount, 1400);
+        } catch (error) {
+          console.error(error);
+          missionFormStatus.textContent = "Could not connect. Please try again.";
+        } finally {
+          missionSubmitBtn.disabled = false;
+          missionSubmitBtn.textContent = "Confirm Mission";
+        }
+      });
+    }
+
+    // Show the mission immediately when the homepage opens.
+    openMissionModal();
+
+    // Initial count + automatic refresh every 60 seconds.
+    loadLiveSupporterCount();
+    setInterval(loadLiveSupporterCount, 60000);
 
 </script>
 </body>
