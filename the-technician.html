@@ -2088,8 +2088,16 @@
       });
     }
 
-    // Show the mission immediately when the homepage opens.
-    openMissionModal();
+    // Show the Audience Mission only once per browser session.
+    // This prevents it from popping up again every time visitors hit Back.
+    const missionSeenThisSession = sessionStorage.getItem("technicianMissionSeen");
+
+    if (!missionSeenThisSession) {
+      openMissionModal();
+      sessionStorage.setItem("technicianMissionSeen", "true");
+    } else {
+      closeMissionModal();
+    }
 
     // Initial count + automatic refresh every 60 seconds.
     loadLiveSupporterCount();
